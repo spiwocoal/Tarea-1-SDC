@@ -1,0 +1,46 @@
+\title{{\Large \\ Plantilla  \\[0.1 cm]}}
+
+\author{Bruno Pacheco}
+\date{Concepción, 2024}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\cfoot{\thepage}
+
+
+\begin{titlepage}
+    \centering
+    \vspace*{0.0 cm}
+    \includegraphics[scale = 0.2]{extras/logo_udec.png}\\[1.0 cm]    % Logo Universidad
+    \textsc{\LARGE Facultad de Ingeniería}\\[1.0 cm]    % Nombre Universidad
+    \textsc{\Large xxxxxx-y }\\[0.5 cm]    % Código Curso
+    \textsc{\large Nombre del curso}\\[0.5 cm]        % Nombre Curso
+    \textsc{\large Profesor Nombre}\\[0.5 cm]
+    \rule{\linewidth}{0.2 mm}
+    {\huge \bfseries \thetitle}
+    \rule{\linewidth}{0.2 mm} \\[1.5 cm]
+    
+    \begin{minipage}{0.6\textwidth}
+    \begin{center} \large
+        \emph{Autor:}\\
+        \theauthor\linebreak
+        \end{center}
+    \end{minipage}\\[3cm]
+
+    {\large \thedate}\\[0 cm]
+\end{titlepage}
+
+
+\fancyhead[L]{\footnotesize Ingeniería Civil Electronica UdeC} %encabezado izquierda
+\fancyhead[R]{\footnotesize Plantilla}   % derecha
+%\fancyfoot[R]{\footnotesize Electromagnetismo y Circuitos}  % Pie derecha
+\fancyfoot[C]{\thepage}  % centro
+%\fancyfoot[L]{\footnotesize Proyecto FAD 11/2018 }
+\renewcommand{\footrulewidth}{0.4pt}

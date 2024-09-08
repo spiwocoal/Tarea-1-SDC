@@ -1,0 +1,27 @@
+name: Generar documento LaTeX
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar repositorio Git
+        uses: actions/checkout@v4
+      - name: Instalar Ghostscript
+        run: |
+          sudo apt-get update
+          sudo apt-get install ghostscript
+          python -m pip install pygments catppuccin[pygments]
+      - name: Compilar documento Latex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          extra_system_packages: "inkscape"
+          latexmk_use_lualatex: true
+          latexmk_shell_escape: true
+      - name: Comprimir documento
+        run: gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=compressed_main.pdf main.pdf
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: documento.pdf
+          path: compressed_main.pdf

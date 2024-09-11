@@ -12,28 +12,22 @@
 
 \usepackage{minted}         % Bloques de código con colores
 \usemintedstyle{catppuccin-latte}
-\renewcommand{\listingscaption}{Programa}
+
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listingscaption}{Programa}}
+\addto\captionsspanish{\providecommand*{\listingautorefname}{Programa}}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.92}
 \setminted{linenos=true, autogobble, bgcolor=bg, breaklines=true}
 
-\newcommand{\graphwidth}{\textwidth}
-\newcommand{\graphheight}{6cm}
-
-
-\doctitle{Plantilla Latex}
-\docsubtitle{Tareas UdeC}
-\author{Bruno Pacheco  \\ $2022426951$ \\ \texttt{Ingeniería Civil Electrónica}}
+\doctitle{Tarea 1}
+\docsubtitle{Sistemas de Control}
+% \author{Bruno Pacheco \and Peter Rozas}
 
 \input{preamble}
 
 \begin{document}
-
-\renewcommand{\listtablename}{Índice de tablas}
-\renewcommand{\tablename}{Tabla}
-
-% Interlineate, it can be changed.
-% \setlength{\baselineskip}{.70cm}
 
 \import{Secciones/}{1_Portada.tex}
 \FloatBarrier

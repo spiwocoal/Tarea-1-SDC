@@ -1,40 +1,36 @@
-\title{{\Large \\ Plantilla  \\[0.1 cm]}}
-
-\author{Bruno Pacheco}
-\date{Concepción, 2024}
-
-\makeatletter
-\let\thetitle\@title
-\let\theauthor\@author
-\let\thedate\@date
-\makeatother
+\title{{\Large \\ Tarea 1 \\[0.1 cm]}}
 
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\thetitle}
 \cfoot{\thepage}
 
-
 \begin{titlepage}
-    \centering
-    \vspace*{0.0 cm}
-    \includegraphics[scale = 0.2]{extras/logo_udec.png}\\[1.0 cm]    % Logo Universidad
-    \textsc{\LARGE Facultad de Ingeniería}\\[1.0 cm]    % Nombre Universidad
-    \textsc{\Large xxxxxx-y }\\[0.5 cm]    % Código Curso
-    \textsc{\large Nombre del curso}\\[0.5 cm]        % Nombre Curso
-    \textsc{\large Profesor Nombre}\\[0.5 cm]
-    \rule{\linewidth}{0.2 mm}
-    {\huge \bfseries \thetitle}
-    \rule{\linewidth}{0.2 mm} \\[1.5 cm]
-    
-    \begin{minipage}{0.6\textwidth}
-    \begin{center} \large
-        \emph{Autor:}\\
-        \theauthor\linebreak
-        \end{center}
-    \end{minipage}\\[3cm]
-
-    {\large \thedate}\\[0 cm]
+    \newcommand{\drop}{0.1\textheight}
+    \vspace*{\drop}
+    \begin{center}
+    {\LARGE\textsc{Universidad de Concepción}}\\[\drop]
+    % University logo
+    \begin{minipage}{0.47\linewidth}
+        \centering
+        {\includegraphics[width=6cm]{extras/logo_udec.png}}
+    \end{minipage}
+    \begin{minipage}{0.47\linewidth}  % yet another guess
+        \centering
+        {\includegraphics[width=6cm]{extras/logo_die.png}}
+    \end{minipage}\\[\drop]
+    \rule{\textwidth}{1pt}\par
+    \vspace{0.5\baselineskip}
+    {\huge\bfseries Sistemas de Control: Tarea 1\\
+    \large --- Profesor José Espinoza ---}\\[0.5\baselineskip]
+    \rule{\textwidth}{1pt}\par
+    \vfill
+    {\Large\textsc{Bruno Pacheco \\ Peter Rozas}}
+    \vfill
+    Concepción, Chile
+    \vfill
+    {\large 2024}
+    \end{center}
 \end{titlepage}
 
 

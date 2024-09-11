@@ -1,28 +1,47 @@
-\section{Problema 1}
+\section{Pregunta \texttt{a)}}
 
-Esto es un texto
-
+Se desea entonces, a partir de las funciones de transferencia dadas, determinar
+una función de transferencia para $\psi (s)$ y $v_{i} (s)$. Es decir, buscamos
 \begin{equation}
-  m_{1}\ddot x_{1} = m_{1}g - K_{1}\left(x_{1} - L_{1}\right) + K_{2}
-                \left(x_{2} - x_{1} - L_{2}\right)
-  \label{eq:p1_edo1}
+  \frac{\psi (s)}{v_{i} (s)}
+  \label{eq:fdt-1}
 \end{equation}
 
-Aquí se cita una referencia \cite{apunte-sld}.
+Observamos entonces que, como se tienen las F. de T. de $\omega (s) / v_{i} (s)$
+y de $\psi (s) / \omega (s)$, entonces
+\begin{equation}
+  \frac{\omega (s)}{v_{i} (s)} \cdot \frac{\psi (s)}{\omega (s)} = \frac{\psi (s)}{v_{i} (s)}
+\end{equation}
 
-\begin{listing}[!ht]
-  \inputminted[firstline=1,lastline=17]{Matlab}{matlab/r.m}
-  \caption{Código Matlab}
-  \label{lst:matlab}
-\end{listing}
+La cual es la F. de T. que deseamos. De este modo, tenemos que la función de
+transferencia que relaciona el ángulo $\psi$ respecto a una entrada de voltaje
+$v_{i}$ es:
 
-\begin{figure}[h!]
-  \centering
-  \input{Diagramas/grafica.tex}
-  \caption{Gráfica insertada}
-  \label{fig:grafica}
-\end{figure}
-\FloatBarrier
+\begin{equation}
+  \frac{\psi (s)}{v_{i} (s)} =
+    \frac{b_{0\omega}\left(b_{1\psi}s + b_{0\psi}\right)}
+    {\left(a_{1\omega}s + a_{0\omega}\right)\left(a_{2\psi}s^{2} + a_{1\psi}s + a_{0\psi}\right)}
+  \label{eq:fdt-2}
+\end{equation}
 
+Luego, queremos representar este sistema en ecuaciones de estado, siendo las
+variables de estado a utilizar
+$\mathbf{x} = \left[x_{1}\ x_{2}\ x_{3}]\right]^{T} = \left[\psi (t)\ \dot\psi (t)\ \omega (t)\right]^{T}$.
+Para esto, aplicaremos la Transformada de Laplace Inversa a cada una de las
+F. de T. dadas, y luego esto nos permitirá determinar un sistema cuya entrada
+sea el voltaje aplicado $v_{i} (t)$. Así, para la primera F. de T. que relaciona
+$\omega$ con $v_{i}$:
+
+\begin{align}
+  \frac{\omega (s)}{v_{i} (s)} &= \frac{b_{0\omega}}{a_{1\omega}s + a_{0\omega}} \\
+  \iff \omega (s) \left(a_{1\omega}s + a_{0\omega}\right) &= b_{0\omega}v_{i} (s)
+    \stepcounter{equation}\tag{\theequation}\label{eq:fdt-3}
+\end{align}
+
+Aplicamos entonces la T.L.I. a \eqref{eq:fdt-3} y obtenemos:
+\begin{align}
+  a_{1\omega}\dot\omega (t) + a_{0\omega}\omega (t) &= b_{0\omega}v_{i} (t) \\
+  \iff \dot\omega (t) &= -\frac{a_{0\omega}}{a_{1\omega}}\omega (t) + \frac{b_{0\omega}}{a_{1\omega}}v_{i} (t)
+\end{align}
 \FloatBarrier
 \newpage

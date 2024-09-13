@@ -23,7 +23,7 @@ pretty(h_pv);
 
 % Ecuaciones de estado
 A_sym = [0, 1, 0;
-    -a_1p/a_2p, a_0p/a_2p, (b_0p/a_2p)-(b_1p*a_0w)/(a_2p*a_1w);
+    -a_0p/a_2p, -a_1p/a_2p,  (b_0p/a_2p)-(b_1p*a_0w)/(a_2p*a_1w);
     0, 0, -a_0w/a_1w];
 B_sym = [0; (b_1p*b_0w)/(a_2p*a_1w); b_0w/a_1w];
 C = [1, 0, 0];
@@ -70,7 +70,46 @@ w_0 = double(v_i0 * subs(limit(h_wv)));
 disp('Valor de v_i0');
 disp(v_i0);
 
+%Rampa
+rampa = @(t) (t >= 0).*t;
+
 % Simulación
 A = double(subs(A_sym)); B = double(subs(B_sym));
-
+t = 0:0.01:10;
 vi = @(t) v_i0 .* (rampa(t-1) - rampa(t-4)) ./ 3;
+
+
+% Resolver ecuaciones de estado
+x0 = [0; 0; 0]; 
+[t, X_prima] = ode45(@(t,x) A*x + B*vi(t), t, x0);
+
+% Salidas 
+psi = X_prima(:,1)* 180/pi 
+psi_prima = X_prima(:,2)  
+omega = X_prima(:,3)* 60/(2*pi) 
+
+%% Graficar
+
+subplot(4,1,1);
+fplot(vi, [0, 10],"color",[0.4940 0.1840 0.5560]);
+title("v_i");
+xlabel("Tiempo (s)", "Interpreter", "latex");
+ylabel("$v_i(t)$", "Interpreter", "latex");
+
+subplot(4,1,2);
+plot(t, psi,"color",[0.4940 0.1840 0.5560]);
+title("$\psi$", "Interpreter", "latex");
+xlabel("Tiempo (s)", "Interpreter", "latex");
+ylabel("$\psi(t)$", "Interpreter", "latex");
+
+subplot(4,1,3);
+plot(t, psi_prima,"color",[0.4940 0.1840 0.5560]);
+title("$\dot{\psi(t)}$", "Interpreter", "latex");
+xlabel("Tiempo (s)", "Interpreter", "latex");
+ylabel("$\dot{\psi(t)}$", "Interpreter", "latex");
+
+subplot(4,1,4);
+plot(t, omega,"color",[0.4940 0.1840 0.5560]);
+title("$\omega(t)$", "Interpreter", "latex");
+xlabel("Tiempo (s)", "Interpreter", "latex");
+ylabel("$\omega(t)$ (RPM)", "Interpreter", "latex");

@@ -1,4 +1,4 @@
-\section{Pregunta \texttt{a)}}
+\section{Pregunta \texttt{a)}}\label{pregunta-a}
 
 Se desea entonces, a partir de las funciones de transferencia dadas, determinar
 una función de transferencia para $\rojo{\psi} (s)$ y $\verd{v_{i}} (s)$. Es decir, buscamos
@@ -84,7 +84,7 @@ Luego, reemplazamos \eqref{eq:estado-omega} en \eqref{eq:estado-psi} y entonces:
 Luego, utilizamos las variables de estado definidas en \eqref{eq:var-estado}
 reemplazando en \eqref{eq:estado-omega} y \eqref{eq:estado-psi-2}, y tenemos
 entonces:
-\begin{equation}
+\begin{equation}\label{eq:matriz_sistema}
   \begin{bmatrix}\dot x_{1}(t) \\ \dot x_{2}(t) \\ \dot x_{3}(t)\end{bmatrix} =
     \begin{bmatrix}
       0 & 1 & 0 \\
@@ -101,6 +101,20 @@ entonces:
 \end{equation}
 
 Donde $\verd{v_{i}} (t)$ es la entrada del sistema.
+
+\subsection{Comentarios}
+
+Podemos comentar respecto a esta pregunta que obtener la función de transferencia
+entre $\rojo{\psi}(s)$ y $\verd{v_{i}}(s)$ fue sencillo, puesto que pudimos
+simplemente multiplicar ambas F. de T. dadas. Sin embargo, luego obtener la
+representación en ecuaciones de estado del sistema fue más complicado, debido
+a la gran cantidad de constantes con las que se trata.
+
+Además, al momento de realizar las simulaciones para la pregunta \texttt{b)}
+(página \pageref{pregunta-b}), nos dimos cuenta que, al pasar las ecuaciones
+de estado al sistema matricial de \eqref{eq:matriz_sistema}, nos equivocamos
+con algunos de los términos, lo cual, al intentar realizar la simulación,
+resultaba en una respuesta totalmente errónea.
 
 \FloatBarrier
 \newpage

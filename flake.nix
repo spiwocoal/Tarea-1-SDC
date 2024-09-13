@@ -19,7 +19,7 @@
               # paquetes necesarios para la plantilla
               biber biblatex ccicons csquotes doclicense ebgaramond enumitem 
               fbox float ifmtarg newtx pict2e subfiles thmtools titlesec
-              titling transparent xifthen xstring 
+              titling transparent xifthen xstring tikz-dependency
 
               # paquetes necesarios para minted
               minted upquote

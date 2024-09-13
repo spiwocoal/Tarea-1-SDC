@@ -1,0 +1,79 @@
+\section{Pregunta \texttt{c)}}
+
+A continuación, queremos implementar un lazo de control al sistema, para que
+este siga una referencia dada. Para esto, se nos indica que se utilizará un
+controlador de tipo proporcional, con ganancia $\nara{k_{c}} = 10\unit{m}$. Además, la
+salida del sistema será sensada y transmitida por un sensor/transmisor
+de ganancia $\nara{k_{st}} = \sfrac{\ang{180}}{\pi}$, y el actuador del sistema
+tendrá una ganancia $\nara{k_{a}} = 100$.
+
+El lazo de control que se utilizará es entonces el que se encuentra representado
+en la \autoref{fig:control-proporcional}.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    % Suma
+    \node[draw,
+        circle,
+        minimum size=0.6cm,
+        fill=white!50
+    ] (sum) at (0,0){};
+     
+    \draw (sum.north east) -- (sum.south west)
+        (sum.north west) -- (sum.south east);
+     
+    \draw (sum.north east) -- (sum.south west)
+    (sum.north west) -- (sum.south east);
+     
+    \node[left=-2pt] at (sum.center){\tiny $+$};
+    \node[below=-1pt] at (sum.center){\tiny $-$};
+     
+    % Controlador
+    \node [block,
+        fill=white,
+        right=1cm of sum
+      ]  (controller) {$\nara{k_{c}}$};
+    
+    % Actuador
+    \node [block,
+        fill=white, 
+        right=1.5cm of controller
+      ] (actuator) {$\nara{k_{a}}$};
+     
+    % Sistema H(s)
+    \node [block,
+        fill=white, 
+        right=1.5cm of actuator
+      ] (system) {$\sfrac{\rojo{\psi}(s)}{\verd{v_{i}}(s)}$};
+     
+    % Sensor/Transmisor
+    \node [block,
+        fill=white, 
+        below right= 1cm and -0.25cm of controller
+      ]  (sensor) {$\nara{k_{st}}$};
+     
+    % Arrows with text label
+    \draw[-stealth] (sum.east) -- (controller.west)
+        node[midway,above]{};
+     
+    \draw[-stealth] (controller.east) -- (actuator.west) 
+        node[midway,above]{$\azul{w}$};
+    
+    \draw[-stealth] (actuator.east) -- (system.west) 
+        node[midway,above]{$\verd{v_{i}}$};
+     
+    \draw[-stealth] (system.east) -- ++ (1.25,0) 
+        node[midway](output){}node[midway,above]{$\rojo{\psi}$};
+     
+    \draw[-stealth] (output.center) |- (sensor.east);
+     
+    \draw[-stealth] (sensor.west) -| (sum.south) 
+        node[near end,left]{$\rojo{\psi_{m}}$};
+     
+    \draw (sum.west) -- ++(-1,0) 
+        node[midway,above]{$\rojo{\psi_{d}}$};
+  \end{tikzpicture}
+  \caption{Lazo cerrado de control para el sistema, con controlador proporcional.}\label{fig:control-proporcional}
+\end{figure}
+

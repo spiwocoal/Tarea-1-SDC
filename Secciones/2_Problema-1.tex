@@ -1,26 +1,26 @@
 \section{Pregunta \texttt{a)}}
 
 Se desea entonces, a partir de las funciones de transferencia dadas, determinar
-una función de transferencia para $\psi (s)$ y $v_{i} (s)$. Es decir, buscamos
+una función de transferencia para $\rojo{\psi} (s)$ y $\verd{v_{i}} (s)$. Es decir, buscamos
 \begin{equation}
-  \frac{\psi (s)}{v_{i} (s)}
+  \frac{\rojo{\psi} (s)}{\verd{v_{i}} (s)}
   \label{eq:fdt-1}
 \end{equation}
 
-Observamos entonces que, como se tienen las F. de T. de $\omega (s) / v_{i} (s)$
-y de $\psi (s) / \omega (s)$, entonces
+Observamos entonces que, como se tienen las F. de T. de $\mora{\omega} (s) / \verd{v_{i}} (s)$
+y de $\rojo{\psi} (s) / \mora{\omega} (s)$, entonces
 \begin{equation}
-  \frac{\omega (s)}{v_{i} (s)} \cdot \frac{\psi (s)}{\omega (s)} = \frac{\psi (s)}{v_{i} (s)}
+  \frac{\mora{\omega} (s)}{\verd{v_{i}} (s)} \cdot \frac{\rojo{\psi} (s)}{\mora{\omega} (s)} = \frac{\rojo{\psi} (s)}{\verd{v_{i}} (s)}
 \end{equation}
 
 La cual es la F. de T. que deseamos. De este modo, tenemos que la función de
-transferencia que relaciona el ángulo $\psi$ respecto a una entrada de voltaje
-$v_{i}$ es:
+transferencia que relaciona el ángulo $\rojo{\psi}$ respecto a una entrada de voltaje
+$\verd{v_{i}}$ es:
 
 \begin{equation}
-  \frac{\psi (s)}{v_{i} (s)} =
-    \frac{b_{0\omega}\left(b_{1\psi}s + b_{0\psi}\right)}
-    {\left(a_{1\omega}s + a_{0\omega}\right)\left(a_{2\psi}s^{2} + a_{1\psi}s + a_{0\psi}\right)}
+  \frac{\rojo{\psi} (s)}{\verd{v_{i}} (s)} =
+    \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
+    {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}
   \label{eq:fdt-2}
 \end{equation}
 
@@ -28,56 +28,56 @@ Luego, queremos representar este sistema en ecuaciones de estado, siendo las
 variables de estado a utilizar
 \begin{equation}
   \mathbf{x} = \begin{bmatrix}x_{1} \\ x_{2} \\ x_{3}\end{bmatrix}
-    = \begin{bmatrix}\psi (t) \\ \dot\psi (t) \\ \omega (t) \end{bmatrix}
+    = \begin{bmatrix}\rojo{\psi} (t) \\ \rojo{\dot\psi} (t) \\ \mora{\omega} (t) \end{bmatrix}
   \label{eq:var-estado}
 \end{equation}
 Para esto, aplicaremos la Transformada de Laplace Inversa a cada una de las
 F. de T. dadas, y luego esto nos permitirá determinar un sistema cuya entrada
-sea el voltaje aplicado $v_{i} (t)$. Así, para la primera F. de T. que relaciona
-$\omega$ con $v_{i}$:
+sea el voltaje aplicado $\verd{v_{i}} (t)$. Así, para la primera F. de T. que relaciona
+$\mora{\omega}$ con $\verd{v_{i}}$:
 
 \begin{align}
-  \frac{\omega (s)}{v_{i} (s)} &= \frac{b_{0\omega}}{a_{1\omega}s + a_{0\omega}} \\
-  \omega (s) \left(a_{1\omega}s + a_{0\omega}\right) &= b_{0\omega}v_{i} (s)
+  \frac{\mora{\omega} (s)}{\verd{v_{i}} (s)} &= \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}s + \nara{a_{0\omega}}} \\
+  \mora{\omega} (s) \left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right) &= \nara{b_{0\omega}}\verd{v_{i}} (s)
     \stepcounter{equation}\tag{\theequation}\label{eq:fdt-3}
 \end{align}
 
 Aplicamos entonces la T.L.I. a \eqref{eq:fdt-3} y obtenemos:
 \begin{align}
-  a_{1\omega}\dot\omega (t) + a_{0\omega}\omega (t) &= b_{0\omega}v_{i} (t) \\
-  \dot\omega (t) &= -\frac{a_{0\omega}}{a_{1\omega}}\omega (t) + \frac{b_{0\omega}}{a_{1\omega}}v_{i} (t)
+  \nara{a_{1\omega}}\mora{\dot\omega} (t) + \nara{a_{0\omega}}\mora{\omega} (t) &= \nara{b_{0\omega}}\verd{v_{i}} (t) \\
+  \mora{\dot\omega} (t) &= -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}}\mora{\omega} (t) + \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}\verd{v_{i}} (t)
   \stepcounter{equation}\tag{\theequation}\label{eq:estado-omega}
 \end{align}
 
-Luego, repetimos el procedimiento para la F. de T. entre $\psi (s)$ y $\omega (s)$.
+Luego, repetimos el procedimiento para la F. de T. entre $\rojo{\psi} (s)$ y $\mora{\omega} (s)$.
 Entonces:
 \begin{align}
-  \frac{\psi (s)}{\omega (s)} &= \frac{b_{1\psi}s + b_{0\psi}}
-    {a_{2\psi}s^{2} + a_{1\psi}s + a_{0\psi}} \\
-  \psi (s) \left(a_{2\psi}s^{2} + a_{1\psi}s + a_{0\psi}\right) &=
-    \omega (s) \left(b_{1\psi}s + b_{0\psi}\right)
+  \frac{\rojo{\psi} (s)}{\mora{\omega} (s)} &= \frac{\nara{b_{1\psi}}s + \nara{b_{0\psi}}}
+    {\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}} \\
+  \rojo{\psi} (s) \left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right) &=
+    \mora{\omega} (s) \left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)
 \end{align}
 
 Aplicamos T.L.I. y se tiene:
 \begin{align}
-  a_{2\psi}\ddot\psi (t) + a_{1\psi}\dot\psi (t) + a_{0\psi}\psi (t) &=
-    b_{1\psi}\dot\omega (t) + b_{0\psi}\omega (t) \\
-  \ddot\psi (t) &= -\frac{a_{1\psi}}{a_{2\psi}}\dot\psi (t) -
-    \frac{a_{0\psi}}{a_{2\psi}}\psi (t) + \frac{b_{1\psi}}{a_{2\psi}}\dot\omega (t) +
-    \frac{b_{0\psi}}{a_{2\psi}}\omega (t)
+  \nara{a_{2\psi}}\rojo{\ddot\psi} (t) + \nara{a_{1\psi}}\rojo{\dot\psi} (t) + \nara{a_{0\psi}}\rojo{\psi} (t) &=
+    \nara{b_{1\psi}}\mora{\dot\omega} (t) + \nara{b_{0\psi}}\mora{\omega} (t) \\
+  \rojo{\ddot\psi} (t) &= -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}}\rojo{\dot\psi} (t) -
+    \frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}}\rojo{\psi} (t) + \frac{\nara{b_{1\psi}}}{\nara{a_{2\psi}}}\mora{\dot\omega} (t) +
+    \frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}}\mora{\omega} (t)
   \stepcounter{equation}\tag{\theequation}\label{eq:estado-psi}
 \end{align}
 
 Luego, reemplazamos \eqref{eq:estado-omega} en \eqref{eq:estado-psi} y entonces:
 \begin{align}
-  \ddot\psi (t) &= -\frac{a_{1\psi}}{a_{2\psi}}\dot\psi (t) -
-    \frac{a_{0\psi}}{a_{2\psi}}\psi (t) +
-    \frac{b_{1\psi}}{a_{2\psi}}\left(-\frac{a_{0\omega}}{a_{1\omega}}\omega (t) + \frac{b_{0\omega}}{a_{1\omega}}v_{i} (t)\right) +
-    \frac{b_{0\psi}}{a_{2\psi}}\omega (t) \\
-  \ddot\psi (t) &= -\frac{a_{1\psi}}{a_{2\psi}}\dot\psi (t) -
-    \frac{a_{0\psi}}{a_{2\psi}}\psi (t) +
-    \left(\frac{b_{0\psi}}{a_{2\psi}} - \frac{b_{1\psi}a_{0\omega}}{a_{2\psi}a_{1\omega}}\right) \omega (t) +
-    \frac{b_{1\psi}b_{0\omega}}{a_{2\psi}a_{1\omega}} v_{i} (t)
+  \rojo{\ddot\psi} (t) &= -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}}\rojo{\dot\psi} (t) -
+    \frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}}\rojo{\psi} (t) +
+    \frac{\nara{b_{1\psi}}}{\nara{a_{2\psi}}}\left(-\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}}\mora{\omega} (t) + \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}\verd{v_{i}} (t)\right) +
+    \frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}}\mora{\omega} (t) \\
+  \rojo{\ddot\psi} (t) &= -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}}\rojo{\dot\psi} (t) -
+    \frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}}\rojo{\psi} (t) +
+    \left(\frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}} - \frac{\nara{b_{1\psi}}\nara{a_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}}\right) \mora{\omega} (t) +
+    \frac{\nara{b_{1\psi}}\nara{b_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \verd{v_{i}} (t)
   \stepcounter{equation}\tag{\theequation}\label{eq:estado-psi-2}
 \end{align}
 
@@ -88,19 +88,19 @@ entonces:
   \begin{bmatrix}\dot x_{1}(t) \\ \dot x_{2}(t) \\ \dot x_{3}(t)\end{bmatrix} =
     \begin{bmatrix}
       0 & 1 & 0 \\
-      -\frac{a_{1\psi}}{a_{2\psi}} & \frac{a_{0\psi}}{a_{2\psi}} & \frac{b_{0\psi}}{a_{2\psi}} - \frac{b_{1\psi}a_{0\omega}}{a_{2\psi}a_{1\omega}} \\
-      0 & 0 & -\frac{a_{0\omega}}{a_{1\omega}}
+      -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}} & \frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}} & \frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}} - \frac{\nara{b_{1\psi}}\nara{a_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+      0 & 0 & -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}}
     \end{bmatrix}
     \begin{bmatrix}x_{1}(t) \\ x_{2}(t) \\ x_{3}(t)\end{bmatrix} +
     \begin{bmatrix}
       0 \\
-      \frac{b_{1\psi}b_{0\omega}}{a_{2\psi}a_{1\omega}} \\
-      \frac{b_{0\omega}}{a_{1\omega}}
+      \frac{\nara{b_{1\psi}}\nara{b_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+      \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}
     \end{bmatrix}
-    v_{i} (t)
+    \verd{v_{i}} (t)
 \end{equation}
 
-Donde $v_{i} (t)$ es la entrada del sistema.
+Donde $\verd{v_{i}} (t)$ es la entrada del sistema.
 
 \FloatBarrier
 \newpage

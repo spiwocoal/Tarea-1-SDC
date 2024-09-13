@@ -1,0 +1,75 @@
+\section{Pregunta \texttt{e)}}\label{pregunta-e}
+
+Luego, se quiere repetir \hyperref[pregunta-c]{\texttt{c)}}, pero con un controlador
+integrador $\sfrac{nara{k_{c}}}{s}$. Entonces, el lazo de control que se utilizará
+será muy similar al de la \autoref{fig:control-proporcional}, pero el bloque 
+controlador será diferente. Éste lazo de control se puede observar en la
+\autoref{fig:control-integral}.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    % Suma
+    \node[draw,
+        circle,
+        minimum size=0.6cm,
+        fill=white!50
+    ] (sum) at (0,0){};
+     
+    \draw (sum.north east) -- (sum.south west)
+        (sum.north west) -- (sum.south east);
+     
+    \draw (sum.north east) -- (sum.south west)
+    (sum.north west) -- (sum.south east);
+     
+    \node[left=-2pt] at (sum.center){\tiny $+$};
+    \node[below=-1pt] at (sum.center){\tiny $-$};
+     
+    % Controlador
+    \node [block,
+        fill=white,
+        right=1cm of sum
+      ]  (controller) {$\sfrac{\nara{k_{c}}}{s}$};
+    
+    % Actuador
+    \node [block,
+        fill=white, 
+        right=1.5cm of controller
+      ] (actuator) {$\nara{k_{a}}$};
+     
+    % Sistema H(s)
+    \node [block,
+        fill=white, 
+        right=1.5cm of actuator
+      ] (system) {$\sfrac{\rojo{\psi}(s)}{\verd{v_{i}}(s)}$};
+     
+    % Sensor/Transmisor
+    \node [block,
+        fill=white, 
+        below right= 1cm and -0.25cm of controller
+      ]  (sensor) {$\nara{k_{st}}$};
+     
+    % Arrows with text label
+    \draw[-stealth] (sum.east) -- (controller.west)
+        node[midway,above]{};
+     
+    \draw[-stealth] (controller.east) -- (actuator.west) 
+        node[midway,above]{$\azul{w}$};
+    
+    \draw[-stealth] (actuator.east) -- (system.west) 
+        node[midway,above]{$\verd{v_{i}}$};
+     
+    \draw[-stealth] (system.east) -- ++ (1.25,0) 
+        node[midway](output){}node[midway,above]{$\rojo{\psi}$};
+     
+    \draw[-stealth] (output.center) |- (sensor.east);
+     
+    \draw[-stealth] (sensor.west) -| (sum.south) 
+        node[near end,left]{$\rojo{\psi_{m}}$};
+     
+    \draw (sum.west) -- ++(-1,0) 
+        node[midway,above]{$\rojo{\psi_{d}}$};
+  \end{tikzpicture}
+  \caption{Lazo cerrado de control para el sistema, con controlador integrador.}\label{fig:control-integral}
+\end{figure}
+

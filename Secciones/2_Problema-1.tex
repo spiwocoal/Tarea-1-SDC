@@ -100,7 +100,30 @@ entonces:
     \verd{v_{i}} (t)
 \end{equation}
 
-Donde $\verd{v_{i}} (t)$ es la entrada del sistema.
+Luego, puesto que se trata de un sistema lineal, entonces se puede escribir
+de la forma $\mathbf{\dot x} = \pmb{A}\mathbf{x} + \pmb{B}u,$ $y = \pmb{C}\mathbf{x}$,
+con $u = \verd{v_{i}} (t)$. Además, la variable de interés que queremos estudiar
+es $\rojo{\psi}(t)$, entonces esta es la salida el sistema.
+
+Entonces para el sistema estudiado se tiene:
+
+\begin{align}
+  \pmb{A} &= \begin{bmatrix}
+      0 & 1 & 0 \\
+      -\frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}}   & -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}} & \frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}} - \frac{\nara{b_{1\psi}}\nara{a_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+      0 & 0 & -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}}
+  \end{bmatrix} &
+  \pmb{B} &= \begin{bmatrix}
+      0 \\
+      \frac{\nara{b_{1\psi}}\nara{b_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+      \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}
+  \end{bmatrix}
+\end{align}
+\begin{align}
+  \pmb{C} = \begin{bmatrix}
+    1 & 0 & 0
+  \end{bmatrix}
+\end{align}
 
 \subsection{Comentarios}
 

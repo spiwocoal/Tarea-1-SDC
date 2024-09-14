@@ -1,5 +1,92 @@
 \section{Pregunta \texttt{b)}}\label{pregunta-b}
 
+A continuación, queremos determinar los valores simbólicos, y luego los
+numéricos de las distintas propiedades del sistema que lo caracterizan.
+
+Para determinar los valores simbólicos, nos apoyaremos en las capacidades
+de cálculo simbólico que nos otorga \textit{MATLAB} gracias a su
+\textit{Symbolic Math Toolbox}. Luego, sustituiremos los valores simbólicos de
+las variables con sus valores numéricos para determinar sus valores numéricos.
+
+El código del programa \textit{MATLAB} que nos permitió realizar los cálculos
+necesarios está disponible en el \autoref{lst:pregunta-b}.
+
+El primer valor que nos interesa determinar es la ganancia DC del sistema, la
+cual corresponde a la ganancia de la entrada respecto a la salida cuando el
+sistema se encuentra en estado estacionario. Para calcularla, debemos ver qué
+valor tomará la F. de T. cuando $s \to 0$. Así, su valor es:
+\begin{equation}\label{eq:gdc}
+  k = \lim_{s \to 0} \frac{\rojo{\psi(s)}}{\verd{v_{i} (s)}} =
+    \frac{\nara{b_{0\psi}b_{0\omega}}}{\nara{a_{0\psi}a_{0\omega}}} = 0.0198
+\end{equation}
+
+Luego, los polos del sistema son aquellos valores de $s$ para los cuales la
+función de trasnferencia se indetermina, o lo que es lo mismo, cuando la
+función de transferencia toma $\pm\infty$ como valor.
+
+Siendo entonces \eqref{eq:fdt-2} la función de transferencia del sistema,
+buscamos $s$ tal que:
+\begin{equation}
+  \left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right) = 0
+\end{equation}
+
+Encontramos entonces que los polos del sistema son
+\begin{align}
+  s_{0} &= -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}} = -1.5152 \\
+  s_{1,2} &= \frac{\nara{a_{1\psi}} \pm \sqrt{\nara{a_{1\psi}} - 4 \nara{a_{0\psi}a_{1\psi}}}}{2\nara{a_{2\psi}}} = -0.6692 \pm 8.9192j
+\end{align}
+
+A continuación, se buscan los ceros del sistema. Aquellos valores de $s$
+que causan que la F. de T. sea cero. Entonces, buscamos $s$ tal que:
+\begin{equation}
+  \nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right) = 0
+\end{equation}
+
+Entonces, el único cero del sistema es:
+\begin{equation}
+  s = -\frac{\nara{b_{0\psi}}}{\nara{b_{1\psi}}} = -4.6843
+\end{equation}
+
+Luego, los valores propios del sistema son los valores propios de la matriz
+$\pmb{A}$ de esta, y a la vez tienen el mismo valor que los polos del
+sistema, entonces, los valores propios son:
+\begin{align}
+  s_{0} &= -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}} = -1.5152 \\
+  s_{1,2} &= \frac{\nara{a_{1\psi}} \pm \sqrt{\nara{a_{1\psi}} - 4 \nara{a_{0\psi}a_{1\psi}}}}{2\nara{a_{2\psi}}} = -0.6692 \pm 8.9192j
+\end{align}
+
+Queremos ahora determinar el valor de $\verd{v_{i0}}$ que tendrá la
+entrada en estado estacionario para lograr un ángulo $\rojo{\psi_{0}} = \sfrac{\angle{30}\pi}{\angle{180}}$.
+
+Puesto que sabemos que la ganancia DC de un sistema L.T.I. es la razón entre la
+entrada del sistema y su salida en estado estacionario, podemos determinar
+entonces el valor de $\verd{v_{i0}}$ tal que:
+\begin{align}
+  k &= \frac{\rojo{\psi_{0}}}{\verd{v_{i0}}} \\
+  \verd{v_{i0}} &= \frac{\rojo{\psi_{0}}}{k} \\
+  \verd{v_{i0}} &= 26.4956
+\end{align}
+
+A continuación, utilizando el sistema en ecuaciones de estado de \eqref{eq:estado-sistema}
+podemos simular el sistema y ver como se comportan sus variables de estado frente
+a una entrada.
+
+Se simula entonces utilizando el comando \texttt{ode45} de \textit{MATLAB} el
+sistema para $0 \leq t \leq 10\ \unit{s}$ cuando se le entrega una entrada de
+\begin{equation}
+  \verd{v_{i}} = \frac{\verd{v_{i0}}}{3}\left(r(t-1) - r(t-4)\right)
+\end{equation}
+
+Entonces, en la \autoref{fig:entrada-sim} se puede ver la gráfica de la entrada,
+mientras que en la \autoref{fig:estado-sim} aquella de las variables de estado
+del sistema.
+
+El código utilizado para estas simulaciones está disponible en el \autoref{lst:problema-b-sims},
+y para exportarlo y luego agregarlos al documento se utilizó el comando \texttt{matlab2tikz}
+\cite{m2tikz} que fue desarrollado por la comunidad para exportar figuras de \textit{MATLAB} a
+\LaTeX mediante el uso de las librerías \texttt{tikz} \cite{pgf} y \texttt{pgfplots}
+\cite{pgfplots}.
+
 \begin{figure}[h]
   \centering
   \input{Diagramas/vi_pb.tex}
@@ -11,4 +98,3 @@
   \input{Diagramas/estado_pb.tex}
   \caption{Simulación de las variables de estado del sistema frente a la entrada dada.}\label{fig:estado-sim}
 \end{figure}
-

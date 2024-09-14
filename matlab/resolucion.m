@@ -53,13 +53,13 @@ b_0w = G; a_1w = tau; a_0w = 1; b_1p = H*(2/5)*(r_b/r)^2;
 b_0p = H*b_b/(m*r^2); a_2p = (2/5)*(r_b/r)^2+1; a_1p = b_b/(m*r^2);
 a_0p = g/R;
 
-gdc = subs(gdc_sym);
+gdc = double(subs(gdc_sym));
 disp('Ganancia DC:');
 disp(gdc);
-p = subs(p_sym);
+p = double(subs(p_sym));
 disp('Polos:');
 disp(p);
-z = subs(z_sym);
+z = double(subs(z_sym));
 disp('Ceros:');
 disp(z);
 
@@ -84,8 +84,7 @@ psi = X_prima(:,1)* 180/pi;
 psi_prima = X_prima(:,2);
 omega = X_prima(:,3)* 60/(2*pi);
 
-%% Graficar
-
+% Graficar
 f1 = figure(1);
 
 plot(t, vi(t),"color",[0.4940 0.1840 0.5560]);
@@ -93,10 +92,6 @@ title("v_i");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$v_i(t)$", "Interpreter", "latex");
 ylim([-1 28]);
-
-% matlab2tikz('figurehandle', f1, 'width', '0.9\textwidth', ...
-%     'height', '0.3\textheight', 'interpretTickLabelsAsTex', true, ...
-%     './vi_pb.tex');
 
 f2 = figure(2);
 
@@ -118,6 +113,8 @@ title("$\omega(t)$", "Interpreter", "latex");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\omega(t)$ (RPM)", "Interpreter", "latex");
 
-% matlab2tikz('figurehandle', f2, 'width', '0.9\textwidth', ...
-%     'height', '0.6\textheight', 'interpretTickLabelsAsTex', true, ...
-%     './estado_pb.tex');
+% matlab2tikz('figurehandle', f1, 'width', '0.9\textwidth', 'height', '0.3\textheight', ...
+% 'interpretTickLabelsAsTex', true, './vi_pb.tex');
+
+% matlab2tikz('figurehandle', f2, 'width', '0.9\textwidth', 'height', '0.6\textheight', ...
+% 'interpretTickLabelsAsTex', true, '.estado_pb.tex');

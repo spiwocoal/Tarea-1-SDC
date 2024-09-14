@@ -16,7 +16,6 @@ y de $\sfrac{\rojo{\psi}(s)}{\mora{\omega}(s)}$, entonces
 La cual es la F. de T. que deseamos. De este modo, tenemos que la función de
 transferencia que relaciona el ángulo $\rojo{\psi}$ respecto a una entrada de voltaje
 $\verd{v_{i}}$ es:
-
 \begin{equation}
   \frac{\rojo{\psi} (s)}{\verd{v_{i}} (s)} =
     \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
@@ -31,11 +30,11 @@ variables de estado a utilizar
     = \begin{bmatrix}\rojo{\psi} (t) \\ \rojo{\dot\psi} (t) \\ \mora{\omega} (t) \end{bmatrix}
   \label{eq:var-estado}
 \end{equation}
+
 Para esto, aplicaremos la Transformada de Laplace Inversa a cada una de las
 F. de T. dadas, y luego esto nos permitirá determinar un sistema cuya entrada
 sea el voltaje aplicado $\verd{v_{i}} (t)$. Así, para la primera F. de T. que relaciona
 $\mora{\omega}$ con $\verd{v_{i}}$:
-
 \begin{align}
   \frac{\mora{\omega} (s)}{\verd{v_{i}} (s)} &= \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}s + \nara{a_{0\omega}}} \\
   \mora{\omega} (s) \left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right) &= \nara{b_{0\omega}}\verd{v_{i}} (s)
@@ -84,7 +83,7 @@ Luego, reemplazamos \eqref{eq:estado-omega} en \eqref{eq:estado-psi} y entonces:
 Luego, utilizamos las variables de estado definidas en \eqref{eq:var-estado}
 reemplazando en \eqref{eq:estado-omega} y \eqref{eq:estado-psi-2}, y tenemos
 entonces:
-\begin{equation}\label{eq:matriz_sistema}
+\begin{equation}\label{eq:estado-sistema}
   \begin{bmatrix}\dot x_{1}(t) \\ \dot x_{2}(t) \\ \dot x_{3}(t)\end{bmatrix} =
     \begin{bmatrix}
       0 & 1 & 0 \\
@@ -106,7 +105,6 @@ con $u = \verd{v_{i}} (t)$. Además, la variable de interés que queremos estudi
 es $\rojo{\psi}(t)$, entonces esta es la salida el sistema.
 
 Entonces para el sistema estudiado se tiene:
-
 \begin{align}
   \pmb{A} &= \begin{bmatrix}
       0 & 1 & 0 \\
@@ -135,7 +133,7 @@ a la gran cantidad de constantes con las que se trata.
 
 Además, al momento de realizar las simulaciones para la pregunta \hyperref[pregunta-b]{\texttt{b)}}
 nos dimos cuenta que, al pasar las ecuaciones de estado al sistema matricial de
-\eqref{eq:matriz_sistema}, nos equivocamos con algunos de los términos, lo cual,
+\eqref{eq:estado-sistema}, nos equivocamos con algunos de los términos, lo cual,
 al intentar realizar la simulación, resultaba en una respuesta totalmente errónea.
 
 \FloatBarrier

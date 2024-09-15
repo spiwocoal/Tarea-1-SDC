@@ -1,0 +1,94 @@
+\section{Pregunta \texttt{d)}}\label{pregunta-d}
+
+Para este apartado nos piden calcular el $\nara{k_{c}}$ que hace al sistema marginalmente estable , donde igualmente nos ayudaremos de \textit{MATLAB}, con el codigo disponible en \autoref{lst:problema-d}, para hacer los calculos primeramente de manera symbolica, donde para esto primero necesitamos encontrar la Función del transferencia de el lazo cerrado para luego encontrar los polos de la F. de T.
+
+Para esto primero encontramos la Nueva Función de transferencia que sale del lazo cerrado visto en \hyperref[pregunta-c]{\texttt{c)}}, Donde tendremos que resolver:
+
+\begin{equation}
+    \frac{G(s)}{1 + G(s)r(s)}
+\end{equation}
+
+Siendo \( G(s) = \nara{k_c k_a} \dfrac{\rojo{\psi}}{\verd{v_i}} \), nuestro lazo abierto, y \( r(s) = \nara{k_{st}} \). Por lo tanto, simbólicamente nos quedaría como:
+
+
+\begin{equation}
+    \frac{G(s)}{1 + G(s)r(s)} = \dfrac{\nara{k_ck_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
+    {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}}{1+\nara{k_ck_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
+    {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}\nara{k_{st}}}
+\end{equation}
+
+donde reordenadando la funcion de Transferancia y ayudandonos de \textit{MATLAB} obtenemos que:
+
+\begin{equation}
+    \frac{(\nara{k_a k_a k_{st} b_{1\psi} b_{0\psi}})s + \nara{k_a k_a k_{st} b_{0\psi} b_{0\omega}}}{(\nara{a_{2\psi} a_{1\omega}})s^3 + (\nara{a_{1\psi} a_{1\omega} + a_{2\psi} a_{0\omega}})s^2 + (\nara{a_{0\psi} a_{1\omega} + a_{1\psi} a_{0\omega} + k_a k_c k_{st} b_{1\psi} b_{0\omega}})s + \nara{a_{0\psi} a_{0\omega} + K_a k_c k_{st} b_{0\psi} b_{0\omega}}}
+\end{equation}
+
+ahora para analizar la estabilidad usamos el criterio de Routh-Hurwitz, cumpliendo que si no hay ceros en la columna pivote tal que trabajaremos el denominador como el polinomio característico: de 
+\begin{align}
+    P(s) = \nara{a_3} s^3 + \nara{a_2} s^2 + \nara{a_1} s + \nara{a_0} &
+\end{align}
+
+donde construimos la tabla de la siguiente manera:
+\[
+\begin{array}{c|cc}
+s^3 & \nara{a_3} & \nara{a_1} \\
+s^2 & \nara{a_2} & \nara{a_0} \\
+s^1 & \nara{b_1} & 0 \\
+s^0 & \nara{b_0} & 
+\end{array}
+\]
+Donde al hacer el desarrolo de obterner \(\nara{b_1}\) y \(\nara{b_0}\) obtenemos lo siguiente:
+
+\[
+\nara{b_1} = \frac{\nara{a_2 a_1} - \nara{a_3 a_0}}{\nara{a_2}}, \quad \nara{b_0} = \nara{a_0}
+\]
+
+Ahora bien, para la estabilidad del sistema, los coeficientes de la primera columna deben ser todos positivos. Es decir, las siguientes condiciones deben cumplirse:
+
+\[
+\nara{a_3} > 0, \quad \nara{a_2} > 0, \quad \nara{b_1} > 0, \quad \nara{a_0} > 0
+\]
+
+Analizando lo anterior, tenemos que la condición \( \nara{b_1} > 0 \) garantiza que no haya cambios de signo en la primera columna de la tabla de Routh.
+
+Ahora bien si reemplazamos:
+ \[
+ P(s)=(\nara{a_{2\psi} a_{1\omega}})s^3 + (\nara{a_{1\psi} a_{1\omega} + a_{2\psi} a_{0\omega}})s^2 + (\nara{a_{0\psi} a_{1\omega} + a_{1\psi} a_{0\omega} + k_a k_c k_{st} b_{1\psi} b_{0\omega}})s + \nara{a_{0\psi} a_{0\omega} + K_a k_c k_{st} b_{0\psi} b_{0\omega}}
+ \] 
+
+Obtenemos el siguiente $\nara{b_1}$:
+ 
+
+\begin{equation}
+    \nara{b_1}=\frac{
+        \left(\nara{a_{1\psi} a_{1\omega}} + \nara{a_{2\psi} a_{0\omega}}\right)
+        \left(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}} + \nara{k_a k_c k_{st} b_{1\psi} b_{0\omega}}\right) 
+        - \nara{a_{2\psi} a_{1\omega}} 
+        \left(\nara{a_{0\psi} a_{0\omega}} + \nara{k_a k_c k_{st} b_{0\psi} b_{0\omega}}\right)
+    }{
+        \nara{a_{1\psi} a_{1\omega}} + \nara{a_{2\psi} a_{0\omega}}
+    }
+\end{equation}
+
+Ahora bien como se menciono necesitamos $\nara{b_1} >0$ y como estamos buscando el \(\nara{k_c}\) lo despejamos de la inecuación tal que se obtiene:
+
+\begin{equation}
+    \nara{k_c} > \dfrac{-(\nara{a_{1\psi} a_{1\omega}}(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) + \nara{ a_{2\psi} a_{0\omega} }(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) - \nara{a_{2\psi} a_{1\omega} a_{0\psi} a_{0\omega}})}  {(\nara{a_{1\psi} a_{1\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) + (\nara{a_{2\psi} a_{0\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) - (\nara{a_{2\psi} a_{1\omega} k_a k_{st} b_{0\psi} b_{0\omega}})}
+\end{equation}
+
+Ahora Traspazamos a \textit{MATLAB} y resolvemos con el uso de este tal que nos da un valor de $\nara{k_c}$
+
+\begin{equation}
+    \nara{k_c} > 0.0222
+\end{equation}
+
+Por lo que se debe cumplir lo anterior para que sea estable, entonces si queremos que nuestro sistema sea marginalmente estable se debe cumplir que:
+
+\begin{equation}
+    \boxed{\nara{k_c} = 0.0222}
+\end{equation}
+
+
+
+
+

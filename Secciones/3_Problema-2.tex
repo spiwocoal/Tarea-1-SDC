@@ -98,3 +98,9 @@ y para exportarlo y luego agregarlos al documento se utilizó el comando \texttt
   \input{Diagramas/estado_pb.tex}
   \caption{Simulación de las variables de estado del sistema frente a la entrada dada.}\label{fig:estado-sim}
 \end{figure}
+
+
+\subsection{Comentarios}
+ 
+
+Como podemos ver, la ganancia del sistema es pequeña ($0.0198$), lo que indica que la salida es una fracción reducida de la entrada en estado estacionario. Los polos, con partes reales negativas, confirman que el sistema es estable, mientras que aquellos con partes imaginarias sugieren la presencia de oscilaciones. Esto se refleja en los gráficos, ya que el sistema no se dispara, sino que aumenta casi linealmente respecto a $\verd{v_i}$ hasta estabilizarse, como se observa en la \autoref{fig:estado-sim}, en la gráfica de $\rojo{\psi}(t)$. El ángulo alcanza los $30^\circ$ al cabo de $6$ segundos, y las RPM del sistema también se estabilizan en ese mismo intervalo. Aunque el sistema parece estable, se presentarán mejoras en secciones posteriores.

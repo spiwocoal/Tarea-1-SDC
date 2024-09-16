@@ -16,7 +16,7 @@ cual corresponde a la ganancia de la entrada respecto a la salida cuando el
 sistema se encuentra en estado estacionario. Para calcularla, debemos ver qué
 valor tomará la F. de T. cuando $s \to 0$. Así, su valor es:
 \begin{equation}\label{eq:gdc}
-  k = \lim_{s \to 0} \frac{\rojo{\psi(s)}}{\verd{v_{i} (s)}} =
+  k = \lim_{s \to 0} \frac{\rojo{\psi}(s)}{\verd{v_{i}}(s)} =
     \frac{\nara{b_{0\psi}b_{0\omega}}}{\nara{a_{0\psi}a_{0\omega}}} = 0.0198
 \end{equation}
 
@@ -56,7 +56,7 @@ sistema, entonces, los valores propios son:
 \end{align}
 
 Queremos ahora determinar el valor de $\verd{v_{i0}}$ que tendrá la
-entrada en estado estacionario para lograr un ángulo $\rojo{\psi_{0}} = \sfrac{\angle{30}\pi}{\angle{180}}$.
+entrada en estado estacionario para lograr un ángulo $\rojo{\psi_{0}} = \sfrac{\ang{30}\pi}{\ang{180}}$.
 
 Puesto que sabemos que la ganancia DC de un sistema L.T.I. es la razón entre la
 entrada del sistema y su salida en estado estacionario, podemos determinar
@@ -84,7 +84,7 @@ del sistema.
 El código utilizado para estas simulaciones está disponible en el \autoref{lst:problema-b-sims},
 y para exportarlo y luego agregarlos al documento se utilizó el comando \texttt{matlab2tikz}
 \cite{m2tikz} que fue desarrollado por la comunidad para exportar figuras de \textit{MATLAB} a
-\LaTeX mediante el uso de las librerías \texttt{tikz} \cite{pgf} y \texttt{pgfplots}
+\LaTeX\ mediante el uso de las librerías \texttt{tikz} \cite{pgf} y \texttt{pgfplots}
 \cite{pgfplots}.
 
 \begin{figure}[h]
@@ -102,5 +102,13 @@ y para exportarlo y luego agregarlos al documento se utilizó el comando \texttt
 
 \subsection{Comentarios}
  
-
-Como podemos ver, la ganancia del sistema es pequeña ($0.0198$), lo que indica que la salida es una fracción reducida de la entrada en estado estacionario. Los polos, con partes reales negativas, confirman que el sistema es estable, mientras que aquellos con partes imaginarias sugieren la presencia de oscilaciones. Esto se refleja en los gráficos, ya que el sistema no se dispara, sino que aumenta casi linealmente respecto a $\verd{v_i}$ hasta estabilizarse, como se observa en la \autoref{fig:estado-sim}, en la gráfica de $\rojo{\psi}(t)$. El ángulo alcanza los $30^\circ$ al cabo de $6$ segundos, y las RPM del sistema también se estabilizan en ese mismo intervalo. Aunque el sistema parece estable, se presentarán mejoras en secciones posteriores.
+Como podemos ver, la ganancia del sistema es pequeña ($0.0198$), lo que indica
+que la salida es una fracción reducida de la entrada en estado estacionario. Los
+polos, con partes reales negativas, confirman que el sistema es estable, mientras
+que aquellos con partes imaginarias sugieren la presencia de oscilaciones. Esto
+se refleja en los gráficos, ya que el sistema no se dispara, sino que aumenta casi
+linealmente respecto a $\verd{v_i}$ hasta estabilizarse, como se observa en la
+\autoref{fig:estado-sim}, en la gráfica de $\rojo{\psi}(t)$. El ángulo alcanza los
+$\ang{30}$ al cabo de $6$ segundos, y las RPM del sistema también se estabilizan
+en ese mismo intervalo. Aunque el sistema parece estable, se presentarán mejoras
+en secciones posteriores.

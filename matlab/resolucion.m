@@ -1,24 +1,11 @@
-%% Definición de parámetros
-r_b = 9.3e-3; r = 9.3e-3; g = 9.8;
-G = 17.5e-3; H = 67.5; m = 28.2e-3;
-R = 87.5e-3; b_b = 4.57e-6; tau = 0.66;
-
-syms b_0w a_1w a_0w b_1p b_0p a_2p a_1p a_0p;
-
-%% Funciones de transferencia
-syms s;
-
-% F.d.T. entre omega y v_i
-h_wv = b_0w / (a_1w*s + a_0w);
-
-% F.d.T. entre psi y omega
-h_pw = (b_1p*s + b_0p) / (a_2p*s^2 + a_1p*s + a_0p);
+%% Cargar parámetros y F.d.T. dadas
+parametros;
 
 %% Pregunta a)
 
 % F.d.T. entre psi y v_i
 h_pv = h_wv * h_pw;
-disp('Función de trasnferencia entre \psi y v_i')
+disp('Función de transferencia entre \psi y v_i')
 pretty(h_pv);
 
 % Ecuaciones de estado
@@ -27,7 +14,6 @@ A_sym = [0, 1, 0;
     0, 0, -a_0w/a_1w];
 B_sym = [0; (b_1p*b_0w)/(a_2p*a_1w); b_0w/a_1w];
 C = [1, 0, 0];
-% C = eye(3);
 
 %% Pregunta b) simbólico
 warning('off', 'symbolic:solve:SolutionsDependOnConditions');
@@ -66,7 +52,6 @@ disp(z);
 % Entrada estado estacionario
 psi_0 = pi/6;
 v_i0 = double(psi_0 / gdc); % Ganancia DC es ganancia en estado estacionario
-w_0 = double(v_i0 * subs(limit(h_wv)));
 disp('Valor de v_i0');
 disp(v_i0);
 
@@ -81,7 +66,7 @@ x0 = [0; 0; 0];
 
 % Salidas 
 psi = X_prima(:,1)* 180/pi;
-psi_prima = X_prima(:,2);
+psi_prima = X_prima(:,2)*180/pi;
 omega = X_prima(:,3)* 60/(2*pi);
 
 % Graficar
@@ -118,3 +103,47 @@ ylabel("$\omega(t)$ (RPM)", "Interpreter", "latex");
 
 % matlab2tikz('figurehandle', f2, 'width', '0.9\textwidth', 'height', '0.6\textheight', ...
 % 'interpretTickLabelsAsTex', true, '.estado_pb.tex');
+
+%% Pregunta c)
+
+k_st = 180/pi; k_a = 100; k_c = 10e-3;
+
+psi_d = @(t) psi_0 .* k_st .* (rampa(t-1) - rampa(t-4)) ./ 3;
+% psi_d = @(t) psi_0 .* k_st .* (u(t-2));
+t = linspace(0, 10, 1e6);
+dt = (t(end) - t(1)) / length(t);
+
+psi_c   = zeros(length(t), 1);
+dpsi_c  = zeros(length(t), 1);
+omega_c = zeros(length(t), 1);
+w_c     = zeros(length(t), 1);
+v_ic    = zeros(length(t), 1);
+
+e = zeros(length(t), 1);
+
+x = [0; 0; 0];
+
+for i = 1:length(t)-1
+    err = psi_d(t(i)) - k_st * x(1);
+
+    w = err * k_c;
+    v_i = w * k_a;
+    dx = A * x + B * v_i;
+    
+    x = x + dt * dx;
+    
+    e(i) = err;
+    psi_c(i+1) = x(1);
+    dpsi_c(i+1) = x(2);
+    omega_c(i+1) = x(3);
+    w_c(i+1) = w;
+    v_ic(i+1) = v_i;
+end
+
+figure(3)
+subplot(3,1,1)
+plot(t, k_st*psi_c, 'r', t, psi_d(t), 'r--');
+subplot(3,1,2)
+plot(t, k_st*dpsi_c);
+subplot(3,1,3)
+plot(t, omega_c*60/(2*pi));

@@ -73,3 +73,124 @@ controlador será diferente. Éste lazo de control se puede observar en la
   \caption{Lazo cerrado de control para el sistema, con controlador integrador.}\label{fig:control-integral}
 \end{figure}
 
+
+Ahora bien,  para encontrar el kc donde se haga marginalmente estable se procedera como lo visto en \hyperref[pregunta-c]{\texttt{c)}} encontrando la función de transferencia del sistema de la \autoref{fig:control-integral} donde se procedera utilizando el calculo simbolico de matlab. 
+
+\begin{equation}
+  \frac{G(s)}{1 + G(s)r(s)} = \dfrac{\frac{\nara{k_c}}{s}\nara{k_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
+  {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}}
+  {1+\frac{\nara{k_c}}{s} \nara{k_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
+  {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}\nara{k_{st}}}
+\end{equation}
+
+Ahora reordenamos se obtiene que la F.de T. seria la siguiente:
+
+
+\begin{equation}
+  \dfrac{(\nara{b_{1\psi} b_{0\omega} k_{st} k_a k_c})s + \nara{b_{0\psi} b_{0\omega}k_st k_a k_c}}
+  {(\nara{a_{2\psi} a_{1\omega}}) s^4 +
+  (\nara{a_{1\psi} a_{1\omega}} + \nara{a_{2\psi} a_{0\omega}}) s^3 + 
+  (\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) s^2 + 
+  (\nara{a_{0\psi} a_{0\omega}} + \nara{b_{1\psi} b_{0\omega}k_{st} k_a k_c})s+ 
+  \nara{b_{0\psi} b_{0\omega} k_{st} k_a k_c}}
+\end{equation}
+
+Donde nos enfocamos en el denominador que es donde se ecuentran lo polos y ahora para analizar la estabilidad usamos el criterio de Routh-Hurwitz, cumpliendo que si no hay ceros en la columna pivote. Trabajaremos el denominador como el polinomio característico:
+\begin{align}
+    P(s) = \nara{a_4} s^4 + \nara{a_3} s^3 + \nara{a_2} s^2 + \nara{a_1} s + \nara{a_0} &
+\end{align}
+
+Donde para aplicar el criterio de Routh-Hurwitz, construimos la siguiente tabla de Routh:
+\[
+\begin{array}{c|ccc}
+s^4 & \nara{a_4} & \nara{a_2} & \nara{a_0} \\
+s^3 & \nara{a_3} & \nara{a_1} & 0\\
+s^2 & \nara{b_1} & \nara{a_0} & 0\\
+s^1 & \nara{c_1} & 0 \\
+s^0 & \nara{0_0} & 
+\end{array}
+\]
+
+
+
+Donde los términos \(\nara{b_1}\) y \(\nara{c_1}\) se calculan de la siguiente manera:
+
+\[
+\nara{b_1} = \frac{\nara{a_3 a_2} - \nara{a_4 a_1}}{\nara{a_3}}, \quad \nara{c_1} = \frac{\nara{b_1 a_1} - \nara{a_3 a_0}}{\nara{b_1}}
+\]
+
+La última fila es simplemente \(\nara{a_0}\).
+
+Para que el sistema sea estable, los coeficientes de la primera columna de la tabla de Routh deben ser todos positivos, es decir, se deben cumplir las siguientes condiciones:
+
+\[
+\nara{a_4} > 0, \quad \nara{a_3} > 0, \quad \nara{b_1} > 0, \quad \nara{c_1} > 0, \quad \nara{a_0} > 0
+\]
+
+
+Donde ahora remplazando el polinomio por el denominador de la F. de T. tendriamos que:
+
+
+\begin{align*}
+  \nara{a_4} &= \nara{a_{2\psi} a_{1\omega}} \\
+  \nara{a_3} &= \nara{a_{1\psi} a_{1\omega}} + \nara{a_{2\psi} a_{0\omega}} \\
+  \nara{a_2} &= \nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}} \\
+  \nara{a_1} &= \nara{a_{0\psi} a_{0\omega}} + \nara{b_{1\psi} b_{0\omega} k_{st} k_a k_c} \\
+  \nara{a_0} &= \nara{b_{0\psi} b_{0\omega} k_{st} k_a k_c} \\
+  \nara{b_1} &= \frac{\nara{a_3 a_2} - \nara{a_4 a_1}}{\nara{a_3}} \\
+  \nara{c_1} &= \frac{\nara{b_1 a_1} - \nara{a_3 a_0}}{\nara{b_1}}
+  \end{align*}
+
+Ahora bien con lo anterior, para que sea marginalmente estable necesitamos que se cumpla  \(\nara{b_1} > 0\)     
+Luego trabajadno con $\nara{b_1}$ notamos que solo $k_c$ se encuentra en $a_1$
+asi que para realizar el calculo mas facil despejamos en base a eso tal que obtendriamos que: 
+
+
+\begin{align} 
+  \frac{\nara{a_3 a_2} - \nara{a_4 a_1}}{\nara{a_3}} &> 0 \\
+  \nara{a_3 a_2} - \nara{a_4 a_1} &> 0 \\
+  - \nara{a_4 a_1} &> - \nara{a_3 a_2} \\
+  \nara{a_1} &< \frac{\nara{a_3 a_2}}{\nara{a_4}} \\
+  \nara{a_{0\psi} a_{0\omega}} + \nara{b_{1\psi} b_{0\omega} k_{st} k_a k_c} &< \frac{\nara{a_3 a_2}}{\nara{a_4}} \\
+  \nara{b_{1\psi} b_{0\omega} k_{st} k_a k_c} &< \frac{\nara{a_3 a_2}}{\nara{a_4}} - \nara{a_{0\psi} a_{0\omega}} \\
+  \nara{k_c}  &< \frac{\nara{a_3 a_2}}{\nara{a_4 b_{1\psi} b_{0\omega} k_{st} k_a}}  - \frac{\nara{a_{0\psi} a_{0\omega}}}{\nara{b_{1\psi} b_{0\omega} k_{st} k_a}}  \\
+\end{align}
+
+Ahora bien si damos el uso del los calculos symbolicos y numericos de \textit{Matlab} (\autoref{lst:problema-e_kc})obtendriamos que: 
+
+\begin{equation}
+  \nara{k_c} < 0.0362
+\end{equation}
+
+Por lo que se debe cumplir lo anterior para que sea estable, entonces si queremos que nuestro sistema sea marginalmente estable se debe cumplir que:
+
+\begin{equation}
+  \boxed{\nara{k_c} = 0.0362}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

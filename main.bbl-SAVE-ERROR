@@ -1,0 +1,260 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global}
+    \entry{ogata}{book}{}
+      \name{author}{1}{}{%
+        {{hash=72cb1e667ce543119df1b777c0db24de}{%
+           family={Ogata},
+           familyi={O\bibinitperiod},
+           given={Katsuhiko},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{72cb1e667ce543119df1b777c0db24de}
+      \strng{fullhash}{72cb1e667ce543119df1b777c0db24de}
+      \strng{bibnamehash}{72cb1e667ce543119df1b777c0db24de}
+      \strng{authorbibnamehash}{72cb1e667ce543119df1b777c0db24de}
+      \strng{authornamehash}{72cb1e667ce543119df1b777c0db24de}
+      \strng{authorfullhash}{72cb1e667ce543119df1b777c0db24de}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{isbn}{9780136156734}
+      \field{title}{Modern Control Engineering}
+      \field{year}{2010}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.pearson.com/en-us/subject-catalog/p/modern-control-engineering/P200000003521/9780137551064
+      \endverb
+      \verb{url}
+      \verb https://www.pearson.com/en-us/subject-catalog/p/modern-control-engineering/P200000003521/9780137551064
+      \endverb
+    \endentry
+    \entry{dorf}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ff20b4ae681b07125e843f03ca4a7b87}{%
+           family={Dorf},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=4f5de3d0d08678b9effc8f4f0a306cab}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={Robert\bibnamedelima H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{0658e279e845b085e5f5267a6c546ab1}
+      \strng{fullhash}{0658e279e845b085e5f5267a6c546ab1}
+      \strng{bibnamehash}{0658e279e845b085e5f5267a6c546ab1}
+      \strng{authorbibnamehash}{0658e279e845b085e5f5267a6c546ab1}
+      \strng{authornamehash}{0658e279e845b085e5f5267a6c546ab1}
+      \strng{authorfullhash}{0658e279e845b085e5f5267a6c546ab1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{12}
+      \field{isbn}{9789332518629}
+      \field{title}{Modern Control Systems}
+      \field{year}{2014}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.pearson.com/en-gb/subject-catalog/p/modern-control-systems-global-edition/P200000004089/9781292426488
+      \endverb
+      \verb{url}
+      \verb https://www.pearson.com/en-gb/subject-catalog/p/modern-control-systems-global-edition/P200000004089/9781292426488
+      \endverb
+    \endentry
+    \entry{apunte-control}{booklet}{}
+      \name{author}{1}{}{%
+        {{hash=bf5fb08813cc6988c1a417f66bc4e564}{%
+           family={Espinoza},
+           familyi={E\bibinitperiod},
+           given={José},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Departamento de Ingeniería Eléctrica}%
+      }
+      \strng{namehash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \strng{fullhash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \strng{bibnamehash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \strng{authorbibnamehash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \strng{authornamehash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \strng{authorfullhash}{bf5fb08813cc6988c1a417f66bc4e564}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Apuntes Sistemas de Control}
+      \field{year}{2024}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://www.udec.cl/jose.espinoza
+      \endverb
+      \verb{url}
+      \verb http://www.udec.cl/jose.espinoza
+      \endverb
+    \endentry
+    \entry{apunte-sld}{booklet}{}
+      \name{author}{2}{}{%
+        {{hash=bf5fb08813cc6988c1a417f66bc4e564}{%
+           family={Espinoza},
+           familyi={E\bibinitperiod},
+           given={José},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a1f4d37550a2c6df44386d9c87be88b1}{%
+           family={Sbárbaro},
+           familyi={S\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Departamento de Ingeniería Eléctrica}%
+      }
+      \strng{namehash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \strng{fullhash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \strng{bibnamehash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \strng{authorbibnamehash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \strng{authornamehash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \strng{authorfullhash}{549fbbcc94a9bd45ab1b2fc09bc9ad7c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Apuntes Sistemas Lineales Dinámicos}
+      \field{year}{2024}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://www.udec.cl/jose.espinoza
+      \endverb
+      \verb{url}
+      \verb http://www.udec.cl/jose.espinoza
+      \endverb
+    \endentry
+    \entry{pgfplots}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=54e3dc3174a4975a8b3c659eae485f25}{%
+           family={Feuersänger},
+           familyi={F\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{54e3dc3174a4975a8b3c659eae485f25}
+      \strng{fullhash}{54e3dc3174a4975a8b3c659eae485f25}
+      \strng{bibnamehash}{54e3dc3174a4975a8b3c659eae485f25}
+      \strng{authorbibnamehash}{54e3dc3174a4975a8b3c659eae485f25}
+      \strng{authornamehash}{54e3dc3174a4975a8b3c659eae485f25}
+      \strng{authorfullhash}{54e3dc3174a4975a8b3c659eae485f25}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{\texttt{pgfplots}: Create normal/logarithmic plots in two and three dimensions}}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.ctan.org/pkg/pgfplots
+      \endverb
+      \verb{url}
+      \verb https://www.ctan.org/pkg/pgfplots
+      \endverb
+    \endentry
+    \entry{m2tikz}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=86dc03e37cb7ab0da40200df1ece1be6}{%
+           family={Schlömer},
+           familyi={S\bibinitperiod},
+           given={Nico},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \strng{fullhash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \strng{bibnamehash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \strng{authorbibnamehash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \strng{authornamehash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \strng{authorfullhash}{86dc03e37cb7ab0da40200df1ece1be6}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{\texttt{matlab2tikz}: A script to convert MATLAB/Octave into TikZ figures for easy and consistent inclusion into LaTeX.}}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+      \endverb
+      \verb{url}
+      \verb https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+      \endverb
+    \endentry
+    \entry{pgf}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=129e88d9b4e0ba07ca911d6e9aebfaca}{%
+           family={Tantau},
+           familyi={T\bibinitperiod},
+           given={Till},
+           giveni={T\bibinitperiod}}}%
+        {{hash=8d62649f09aa401c82a531e3e14249ca}{%
+           family={Menke},
+           familyi={M\bibinitperiod},
+           given={Henri},
+           giveni={H\bibinitperiod}}}%
+        {{hash=54e3dc3174a4975a8b3c659eae485f25}{%
+           family={Feuersänger},
+           familyi={F\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \strng{fullhash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \strng{bibnamehash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \strng{authorbibnamehash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \strng{authornamehash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \strng{authorfullhash}{f508b1867f3bb0e5e0f02aeabdf62c8b}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{\texttt{pgf}: Create PostScript and PDF graphics in TeX.}}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.ctan.org/pkg/pgf
+      \endverb
+      \verb{url}
+      \verb https://www.ctan.org/pkg/pgf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

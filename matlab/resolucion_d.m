@@ -30,16 +30,9 @@ disp('Parte derecha de la inecuación');
 pretty(num_div_den);
 
 %% Remplazo de a valores numericicos
-b_0w = G; 
-a_1w = tau; 
-a_0w = 1;
-b_1p = H*(2/5)*(r_b/r)^2;
-b_0p = H*b_b/(m*r^2);
-a_2p = (2/5)*(r_b/r)^2+1;
-a_1p = b_b/(m*r^2);
-a_0p = g/R;
-ka   = 100;
-k_st  = 180/pi;
+b_0w = G; a_1w = tau; a_0w = 1; b_1p = H*(2/5)*(r_b/r)^2;
+b_0p = H*b_b/(m*r^2); a_2p = (2/5)*(r_b/r)^2+1; a_1p = b_b/(m*r^2); a_0p = g/R;
+ka   = 100;   k_st  = 180/pi;
 
 
 KC_final= subs(num_div_den);

@@ -182,7 +182,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{\texttt{pgfplots}: Create normal/logarithmic plots in two and three dimensions}}
-      \true{nocite}
       \verb{urlraw}
       \verb https://www.ctan.org/pkg/pgfplots
       \endverb
@@ -209,7 +208,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{\texttt{matlab2tikz}: A script to convert MATLAB/Octave into TikZ figures for easy and consistent inclusion into LaTeX.}}
-      \true{nocite}
       \verb{urlraw}
       \verb https://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
       \endverb
@@ -246,7 +244,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{\texttt{pgf}: Create PostScript and PDF graphics in TeX.}}
-      \true{nocite}
       \verb{urlraw}
       \verb https://www.ctan.org/pkg/pgf
       \endverb

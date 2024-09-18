@@ -1,0 +1,49 @@
+\section{Pregunta \texttt{f)}}\label{pregunta-f}
+
+Para poder determinar el equivalente discreto nos aprovechamos de la matriz resultante en \hyperref[pregunta-b]{\texttt{b)}} que son la que se ven a continuación:
+
+\begin{align}
+    \pmb{A} &= \begin{bmatrix}
+        0 & 1 & 0 \\
+        -\frac{\nara{a_{0\psi}}}{\nara{a_{2\psi}}}   & -\frac{\nara{a_{1\psi}}}{\nara{a_{2\psi}}} & \frac{\nara{b_{0\psi}}}{\nara{a_{2\psi}}} - \frac{\nara{b_{1\psi}}\nara{a_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+        0 & 0 & -\frac{\nara{a_{0\omega}}}{\nara{a_{1\omega}}}
+    \end{bmatrix} &
+    \pmb{B} &= \begin{bmatrix}
+        0 \\
+        \frac{\nara{b_{1\psi}}\nara{b_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
+        \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}
+    \end{bmatrix}
+  \end{align}
+  \begin{align}
+    \pmb{C} = \begin{bmatrix}
+      1 & 0 & 0
+    \end{bmatrix}
+  \end{align}
+
+Ahora bien por lo que vimos en Sistemas lineales Dinamicos sabemos que los equivalentes discretos de las matrices se puede calcular como:
+
+\[
+\mathbf{A_d}= e^{\mathbf{A}T} ,\quad \mathbf{B_d}= \int_{0}^{T} e^{\mathbf{A}(T-\sigma)}\mathbf{B}  \,d\sigma 
+\]
+
+Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que nuestras matrices discretas serian las siguientes:
+
+
+\begin{align}
+    \mathbf{A_d} &= \begin{bmatrix}
+        -0.1106 & 0.0970 & 0.7400 \\
+        -7.6484 &  -0.2385 & 4.5822 \\
+        0 & 0 & 0.7386
+    \end{bmatrix} &
+    \mathbf{B_d} &= \begin{bmatrix}
+        0.0090 \\
+        0.0710 \\
+        0.0046
+    \end{bmatrix}
+  \end{align}
+  \begin{align}
+    \pmb{C} = \begin{bmatrix}
+      1 & 0 & 0
+    \end{bmatrix}
+\end{align}
+

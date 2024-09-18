@@ -16,9 +16,9 @@ F_T = ((kc/s).*ka.*psi_vi*k_st)./(1 + (kc/s).*ka.*psi_vi.*k_st);
 
 [num,den] = numden(F_T);
 
-FT_sym= collect(den,s);
+den_FT= collect(den,s);
 disp('Denominador FT:');
-disp(FT_sym);
+disp(den_FT);
 
 %Resultados del criterio de Routh-Hurwitz
 a_4 = (a_2p .* a_1w);

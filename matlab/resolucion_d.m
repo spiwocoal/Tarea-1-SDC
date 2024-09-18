@@ -16,9 +16,9 @@ F_T = ((kc).*ka.*psi_vi*k_st)./(1 + (kc).*ka.*psi_vi.*k_st);
 
 [num,den] = numden(F_T);
 
-FT_sym= collect(den,s);
+den_FT= collect(den,s);
 disp('Denominador FT:');
-disp(FT_sym);
+disp(den_FT);
 
 %la parte derecha de la incuación la anotamos a mano 
 num_ineq = -(a_1p*a_1w*(a_0p*a_1w + a_1p*a_0w) + a_2p*a_0w*(a_0p*a_1w + a_1p*a_0w) - a_2p*a_1w*a_0p*a_0w);

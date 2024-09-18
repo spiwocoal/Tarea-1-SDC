@@ -77,6 +77,27 @@ en la \autoref{fig:control-proporcional}.
   \caption{Lazo cerrado de control para el sistema, con controlador proporcional.}\label{fig:control-proporcional}
 \end{figure}
 
+Luego, utilizamos \textit{MATLAB} para simular el sistema con controlador, sujeto
+a una referencia de
+\begin{equation}
+	\rojo{\psi_{d}}(t) = \rojo{\psi_{0}}\nara{k_{st}}\left(r(t-1) - r(t-4)\right) \mathbin{/} 3
+\end{equation}
+
+Para esto, utilizamos método de Euler para resolver las ecuaciones de estado
+del sistema. Para cada iteración del método, determinamos el error entre la
+referencia $\rojo{\psi_{d}}$ y el valor medido $\rojo{\psi_{m}} = \nara{k_{st}}\rojo{\psi}$.
+Luego, el valor de $\azul{w}$, la entrada del actuador se obtiene multiplicando
+este error por la ganancia del controlador. Esto luego nos permite obtener el
+voltaje de entrada, el cual será $\nara{k_{a}}\azul{w}$, es decir, la respuesta del
+actuador frente a entrada $\azul{w}$. Con este voltaje, entonces podemos utilizar
+las ecuaciones de estado de \eqref{eq:estado-sistema} para determinar la salida del
+sistema. El código utilizado para realizar las simulaciones está disponible en
+el \autoref{lst:problema-c} y \autoref{lst:problema-c-sims}.
+
+El ángulo de referencia deseado, junto con la salida entregada por la simulación
+puede observarse en la \autoref{fig:psi-proporcional}, y el resto de las variables
+de estado del sistema están disponibles en la \autoref{fig:estado-proporcional}.
+
 \begin{figure}[h]
   \centering
   \input{Diagramas/psi_pc.tex}
@@ -88,4 +109,13 @@ en la \autoref{fig:control-proporcional}.
   \input{Diagramas/estado_pc.tex}
   \caption{Variables de estado del sistema con contolador proporcional..}\label{fig:estado-proporcional}
 \end{figure}
+
+\subsection{Comentarios}
+
+Se puede observar de la simulación realizada que el controlador proporcional por
+su cuenta es inadecuado para controlar este sistema, puesto que el error en estado
+estacionario es demasiado alto. De hecho, el ángulo no alcanza en ningún momento
+a llegar al valor deseado de $\ang{30}$, quedándose en valores cercanos a los $\ang{15}$.
+
+Entonces, es necesario mejorar el método de control utilizado en el sistema.
 

@@ -36,14 +36,16 @@
               placeins
             ]));
           })
-
-          nix-matlab.overlay
         ];
         pkgs = import nixpkgs { inherit system overlays; };
       in rec {
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ matlab ];
-          shellHook = "${nix-matlab.shellHooksCommon}";
+          buildInputs = with nix-matlab.packages.${system}; [
+            matlab
+          ];
+          shellHook = nix-matlab.shellHooksCommon;
+
+          packages = with pkgs; [ python tex ];
         };
 
         packages = {

@@ -38,11 +38,13 @@
           })
         ];
         pkgs = import nixpkgs { inherit system overlays; };
+        flake-overlays = [ nix-matlab.overlay ];
       in rec {
         devShells.default = pkgs.mkShell {
-          buildInputs = with nix-matlab.packages.${system}; [
+          buildInputs = (with nix-matlab.packages.${system}; [
             matlab
-          ];
+          ]);
+
           shellHook = nix-matlab.shellHooksCommon;
 
           packages = with pkgs; [ python tex ];

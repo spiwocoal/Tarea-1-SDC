@@ -26,6 +26,7 @@ y tick label style={
         /tikz/.cd
     },
 axis background/.style={fill=white},
+title style={font=\bfseries},
 title={Entrada al actuador}
 ]
 \addplot [color=cyan, forget plot]
@@ -10055,6 +10056,7 @@ ymax=16,
 ylabel style={font=\color{white!15!black}},
 ylabel={$\verd{v_{i}}(t)\ [\unit{V}]$},
 axis background/.style={fill=white},
+title style={font=\bfseries},
 title={Voltaje del motor}
 ]
 \addplot [color=Green, forget plot]
@@ -30112,7 +30114,6 @@ ymax=2.5,
 ylabel style={font=\color{white!15!black}},
 ylabel={$\mora{\omega}(t)\ [\unit{RPM}]$},
 axis background/.style={fill=white},
-title style={font=\bfseries\color{mycolor2}},
 ]
 \addplot [color=violet, forget plot]
   table[row sep=crcr]{%

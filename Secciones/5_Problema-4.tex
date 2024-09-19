@@ -83,3 +83,24 @@ que hace que el sistema lo sea es:
 \begin{equation}
     \boxed{\nara{k_c} = 0.0222}
 \end{equation}
+
+Luego, simulamos para esta ganancia tal como se hizo en la pregunta \hyperref[pregunta-c]{\texttt{c)}}.
+Se obtiene entonces la salida controlada que se observa en la \autoref{fig:psi-prop-marge}
+y los valores de las variables de estado en la \autoref{fig:estado-prop-marge}.
+
+%% TODO: Explicar como se obtuvo
+Podemos observar que el periodo de la oscilación que ocurre es de aproximadamente
+$500\ \unit{ms}$.
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/psi_pd.tex}
+  \caption{Referencia y ángulo obtenido con controlador proporcional}\label{fig:psi-prop-marge}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pd.tex}
+  \caption{Variables de estado del sistema con contolador proporcional}\label{fig:estado-prop-marge}
+
+\end{figure}

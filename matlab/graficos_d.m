@@ -44,8 +44,8 @@ end
 
 if exportar
   matlab2tikz('figurehandle', f1, 'width', '0.9\textwidth', 'height', '0.3\textheight', ...
-    'interpretTickLabelsAsTex', true, './psi_pc.tex');
+    'interpretTickLabelsAsTex', true, './psi_pd.tex');
   
   matlab2tikz('figurehandle', f2, 'width', '0.9\textwidth', 'height', '0.6\textheight', ...
-    'interpretTickLabelsAsTex', true, './estado_pc.tex');
+    'interpretTickLabelsAsTex', true, './estado_pd.tex');
 end

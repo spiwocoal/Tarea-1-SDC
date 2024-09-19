@@ -1,4 +1,4 @@
-pregunta_b_num;
+psi_0   = 30 * pi/180;
 
 %% Ganancias del sistema
 k_st = 180/pi; k_a = 100; k_c = 0.02222;

@@ -1,42 +1,35 @@
 %%Resolucion e para encontar kc
+parametros;
+pregunta_a;
 
-% Definición de parámetros
-r_b = 9.53e-3; r = 9.3e-3; g = 9.8;
-G = 17.5e-3; H = 67.5; m = 28.2e-3;
-R = 87.5e-3; b_b = 4.57e-6; tau = 0.66;
+syms k_a k_c k_st s;
 
-syms b_0w a_1w a_0w b_1p b_0p a_2p a_1p a_0p ka kc k_st s;
+%% Lazo cerrado simbólico
+% FdT lazo directo
+h_ld = (k_c/s) * k_a * h_pv;
 
-% Lazo cerrado simbólico
-%psi/vi
-psi_vi = ((b_0w*(b_0p + b_1p*s))/((a_0w + a_1w*s)*(a_2p*s^2 + a_1p*s + a_0p)));
+% FdT lazo cerrado
+h_lc = h_ld / (1 + k_st * h_ld);
 
-%F_T lazo cerrado
-F_T = ((kc/s).*ka.*psi_vi*k_st)./(1 + (kc/s).*ka.*psi_vi.*k_st);
-
-[num,den] = numden(F_T);
-
-den_FT= collect(den,s);
+[num,den] = numden(h_lc);
 disp('Denominador FT:');
-disp(den_FT);
+disp(collect(den,s));
 
-%Resultados del criterio de Routh-Hurwitz
+% Resultados del criterio de Routh-Hurwitz
 a_4 = (a_2p .* a_1w);
 a_3 = (a_1p .* a_1w) + (a_2p .* a_0w) ;
 a_2 = (a_0p .* a_1w) + (a_1p .* a_0w) ;
-a_1 = (a_0p .* a_0w) + (b_1p .* b_0w .*k_st .*ka.* kc) ;
-a_0 = (b_0p .* b_0w .* k_st .* ka .* kc) ;
+a_1 = (a_0p .* a_0w) + (b_1p .* b_0w .*k_st .*k_a.* k_c) ;
+a_0 = (b_0p .* b_0w .* k_st .* k_a .* k_c) ;
 b_1 = (a_3 * a_2 - a_4 * a_1) / a_3 ;
 c_1 = (b_1 * a_1 - a_3 * a_0) / b_1;
 
-%kc en b_1 es 
+% kc en b_1 es 
+k_c = ((a_3 .* a_2)./(a_4 .* b_1p .* b_0w .* k_st .* k_a)) - ((a_0p .* a_0w)./ (b_1p .* b_0w .* k_st .* k_a));
 
-k_c= ((a_3 .* a_2)./(a_4 .* b_1p .* b_0w .* k_st .* ka)) - ((a_0p .* a_0w)./ (b_1p .* b_0w .* k_st .* ka))
-
-% Remplazo de los valores numericos
-b_0w = G; a_1w = tau; a_0w = 1; b_1p = H*(2/5)*(r_b/r)^2;b_0p = H*b_b/(m*r^2);
-a_2p = (2/5)*(r_b/r)^2+1; a_1p = b_b/(m*r^2); a_0p = g/R; ka   = 100;
-k_st  = 180/pi;
+%% Remplazo de los valores numericos
+constantes;
+k_a   = 100; k_st  = 180/pi;
 
 KC_final= subs(k_c);
 disp('valor kc');

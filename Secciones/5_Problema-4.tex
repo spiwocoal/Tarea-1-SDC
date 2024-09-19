@@ -40,18 +40,18 @@ representan los coeficientes del polinomio:
 Construimos entonces la tabla para el criterio de Routh-Hurwitz, y observamos
 que no hay ceros presentes en la columan pivote:
 \begin{equation}
-	\begin{array}{c|cc}
-		s^3 & \nara{a_3} & \nara{a_1} \\
-		s^2 & \nara{a_2} & \nara{a_0} \\
-		s^1 & \nara{b_1} & 0 \\
-		s^0 & \nara{b_0} & 
-	\end{array}
+  \begin{array}{c|cc}
+    s^3 & \nara{a_3} & \nara{a_1} \\
+    s^2 & \nara{a_2} & \nara{a_0} \\
+    s^1 & \nara{b_1} & 0 \\
+    s^0 & \nara{b_0} & 
+  \end{array}
 \end{equation}
 
 Donde sabemos que:
 \begin{align}
-	\nara{b_1} = \frac{\nara{a_2 a_1} - \nara{a_3 a_0}}{\nara{a_2}},\quad
-	\nara{b_0} = \nara{a_0}
+  \nara{b_1} = \frac{\nara{a_2 a_1} - \nara{a_3 a_0}}{\nara{a_2}},\quad
+  \nara{b_0} = \nara{a_0}
 \end{align}
 
 Para tener estabilidad en el sistema, los coeficientes de la primera columna
@@ -73,8 +73,8 @@ Reemplazamos los coeficientes y obtenemos
 Resolvemos entonces para $\nara{k_{c}}$, y vemos que para que el sistema sea
 estable se necesita que
 \begin{align}
-	     \nara{k_{c}} &> \dfrac{-(\nara{a_{1\psi} a_{1\omega}}(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) + \nara{ a_{2\psi} a_{0\omega} }(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) - \nara{a_{2\psi} a_{1\omega} a_{0\psi} a_{0\omega}})}  {(\nara{a_{1\psi} a_{1\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) + (\nara{a_{2\psi} a_{0\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) - (\nara{a_{2\psi} a_{1\omega} k_a k_{st} b_{0\psi} b_{0\omega}})} \\
-	\iff \nara{k_{c}} &> 0.0222
+       \nara{k_{c}} &> \dfrac{-(\nara{a_{1\psi} a_{1\omega}}(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) + \nara{ a_{2\psi} a_{0\omega} }(\nara{a_{0\psi} a_{1\omega}} + \nara{a_{1\psi} a_{0\omega}}) - \nara{a_{2\psi} a_{1\omega} a_{0\psi} a_{0\omega}})}  {(\nara{a_{1\psi} a_{1\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) + (\nara{a_{2\psi} a_{0\omega} k_a k_{st} b_{1\psi} b_{0\omega}}) - (\nara{a_{2\psi} a_{1\omega} k_a k_{st} b_{0\psi} b_{0\omega}})} \\
+  \iff \nara{k_{c}} &> 0.0222
 \end{align}
 
 Para que el sistema sea estable entonces se debe cumplir lo anterior. Pero
@@ -88,7 +88,8 @@ Luego, simulamos para esta ganancia tal como se hizo en la pregunta \hyperref[pr
 Se obtiene entonces la salida controlada que se observa en la \autoref{fig:psi-prop-marge}
 y los valores de las variables de estado en la \autoref{fig:estado-prop-marge}.
 
-%% TODO: Explicar como se obtuvo
+%% TODO: Explicar como se obtuvo el periodo, tal vez haciendo zoom a una parte
+%%       del grafico...
 Podemos observar que el periodo de la oscilación que ocurre es de aproximadamente
 $500\ \unit{ms}$.
 
@@ -102,5 +103,8 @@ $500\ \unit{ms}$.
   \centering
   \input{Diagramas/estado_pd.tex}
   \caption{Variables de estado del sistema con contolador proporcional}\label{fig:estado-prop-marge}
-
 \end{figure}
+
+\subsection{Comentarios}
+
+Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.

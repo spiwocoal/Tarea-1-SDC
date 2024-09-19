@@ -11,6 +11,7 @@ plot(t, psi, 'r', t, psi_d(t), 'r--');
 title("Ángulo de referencia y la salida");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\psi$ (deg)", "Interpreter", "latex");
+legend('medido', 'referencia');
 
 f2 = figure(2);
 
@@ -44,8 +45,8 @@ end
 
 if exportar
   matlab2tikz('figurehandle', f1, 'width', '0.9\textwidth', 'height', '0.3\textheight', ...
-    'interpretTickLabelsAsTex', true, './psi_pd.tex');
+    'interpretTickLabelsAsTex', true, './psi_pe.tex');
   
   matlab2tikz('figurehandle', f2, 'width', '0.9\textwidth', 'height', '0.6\textheight', ...
-    'interpretTickLabelsAsTex', true, './estado_pd.tex');
+    'interpretTickLabelsAsTex', true, './estado_pe.tex');
 end

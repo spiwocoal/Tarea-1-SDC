@@ -73,6 +73,28 @@ controlador será diferente. Éste lazo de control se puede observar en la
   \caption{Lazo cerrado de control para el sistema, con controlador integrador.}\label{fig:control-integral}
 \end{figure}
 
+Se simula entonces este sistema, para $\nara{k_{c}} = 10\ \unit{m}$. Para simular
+el comportamiento del controlador integrador, se utilizó el comando \verb|trapz|
+de \textit{MATLAB} para calcular una aproximación de la integral del error entre
+la referencia y la salida medida. El código de la simulación está disponible en
+el \autoref{lst:problema-e-sims}.
+
+Entonces, las gráficas de las variables del sistema están disponibles en la
+\autoref{fig:psi-integral} y \autoref{fig:estado-integral}.
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/psi_pe.tex}
+  \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-integral}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pe.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-integral}
+\end{figure}
+
+\FloatBarrier
 
 Ahora bien,  para encontrar el $\nara{k_c}$ donde se haga marginalmente estable se procedera como lo visto en \hyperref[pregunta-c]{\texttt{c)}} encontrando la función de transferencia del sistema de la \autoref{fig:control-integral} donde se procedera utilizando el calculo simbolico de matlab. 
 
@@ -167,3 +189,5 @@ Por lo que se debe cumplir lo anterior para que sea estable, entonces si queremo
 \begin{equation}
   \boxed{\nara{k_c} = 0.0362}
 \end{equation}
+
+

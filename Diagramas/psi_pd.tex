@@ -21,7 +21,9 @@ ylabel style={font=\color{white!15!black}},
 ylabel={$\rojo{\psi}(t)\ [\unit{deg}]$},
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Ángulo de referencia y la salida obtenida}
+title={Ángulo de referencia y la salida obtenida},
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos=south east
 ]
 \addplot [color=red, forget plot]
   table[row sep=crcr]{%
@@ -8031,7 +8033,7 @@ title={Ángulo de referencia y la salida obtenida}
 7.999799979998	21.1269656115558\\
 8.000800080008	21.1338044140365\\
 };
-\addplot [color=red, forget plot]
+\addplot [color=red]
   table[row sep=crcr]{%
 8.000800080008	21.1338044140365\\
 8.001800180018	21.140693670896\\
@@ -10034,6 +10036,8 @@ title={Ángulo de referencia y la salida obtenida}
 9.99899989999	20.7268894362594\\
 10	20.7290275877254\\
 };
+\addlegendentry{$\rojo{\psi_{m}}$}
+
 \addplot [color=red, dashed, forget plot]
   table[row sep=crcr]{%
 0	0\\
@@ -18042,7 +18046,7 @@ title={Ángulo de referencia y la salida obtenida}
 7.999799979998	30\\
 8.000800080008	30\\
 };
-\addplot [color=red, dashed, forget plot]
+\addplot [color=red, dashed]
   table[row sep=crcr]{%
 8.000800080008	30\\
 8.001800180018	30\\
@@ -20045,5 +20049,6 @@ title={Ángulo de referencia y la salida obtenida}
 9.99899989999	30\\
 10	30\\
 };
+\addlegendentry{$\rojo{\psi_{d}}$}
 \end{axis}
 \end{tikzpicture}%

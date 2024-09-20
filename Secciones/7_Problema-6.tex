@@ -26,7 +26,7 @@ Ahora bien por lo que vimos en Sistemas lineales Dinamicos sabemos que los equiv
 \mathbf{A_d}= e^{\mathbf{A}T} ,\quad \mathbf{B_d}= \int_{0}^{T} e^{\mathbf{A}(T-\sigma)}\mathbf{B}  \,d\sigma 
 \]
 
-Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que nuestras matrices discretas serian las siguientes:
+Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que las matrices discretas serian las siguientes :
 
 
 \begin{align}
@@ -42,8 +42,33 @@ Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que nue
     \end{bmatrix}
   \end{align}
   \begin{align}
-    \pmb{C} = \begin{bmatrix}
+    \pmb{C_{d1}} = \begin{bmatrix}
       1 & 0 & 0
+    \end{bmatrix}&
+    \pmb{C_{d2}} = \begin{bmatrix}
+      0 & 1 & 0
     \end{bmatrix}
 \end{align}
+
+Siendo $\pmb{C_{d1}} $, $\pmb{C_{d2}} $ las salidas para conseguir $\rojo{\psi}(kT)$ y $\mora{\omega}(kT)$ respectivamente.
+
+Luego los valores propios del la matriz $A_d$ se calcularon usando el comando de \texttt{aig} de \textit{Matlab} dando los siguientes resultados.
+\begin{align}
+  valor propio_{0} &=  0.7386 \\
+  valor propio_{1,2} &=  -0.1745 \pm 0.8588j
+\end{align}
+
+A continuación, con las matrices discretas obtenidas graficaremos en un tiempo de $0 \leq kT \leq 10\ \unit{s}$, con respecto a la entrada dada en \hyperref[pregunta-b]{\texttt{b)}}, pero discretizada quedando como:
+
+\begin{equation}
+  \verd{v_{i}}(kT) = \frac{\verd{v_{i0}}}{3}\left(r(kT-1) - r(kT-4)\right)
+\end{equation}
+
+A continuacion se no pidieron graficar la entrada $ \verd{v_{i}}(kT) $ y las salidas $ \rojo{\psi}(kT)(grados) $ y $ \mora{\omega}(kT)(rpm) $ resultando lo siguiente:
+
+
+
+
+
+
 

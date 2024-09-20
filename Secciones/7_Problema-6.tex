@@ -1,6 +1,7 @@
 \section{Pregunta \texttt{f)}}\label{pregunta-f}
 
-Para poder determinar el equivalente discreto nos aprovechamos de la matriz resultante en \hyperref[pregunta-b]{\texttt{b)}} que son la que se ven a continuación:
+Para poder determinar el equivalente discreto nos aprovechamos de la matriz
+resultante en \hyperref[pregunta-b]{\texttt{b)}} que son la que se ven a continuación:
 
 \begin{align}
     \pmb{A} &= \begin{bmatrix}
@@ -20,13 +21,15 @@ Para poder determinar el equivalente discreto nos aprovechamos de la matriz resu
     \end{bmatrix}
   \end{align}
 
-Ahora bien por lo que vimos en Sistemas lineales Dinamicos sabemos que los equivalentes discretos de las matrices se puede calcular como:
+Ahora bien por lo que vimos en Sistemas lineales Dinamicos sabemos que los
+equivalentes discretos de las matrices se puede calcular como:
 
 \[
 \mathbf{A_d}= e^{\mathbf{A}T} ,\quad \mathbf{B_d}= \int_{0}^{T} e^{\mathbf{A}(T-\sigma)}\mathbf{B}  \,d\sigma 
 \]
 
-Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que las matrices discretas serian las siguientes :
+Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que las
+matrices discretas serian las siguientes :
 
 
 \begin{align}
@@ -50,24 +53,29 @@ Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que las
     \end{bmatrix}
 \end{align}
 
-Siendo $\pmb{C_{d1}} $, $\pmb{C_{d2}} $ las salidas para conseguir $\rojo{\psi}(kT)$ y $\mora{\omega}(kT)$ respectivamente.
+Siendo $\pmb{C_{d1}} $, $\pmb{C_{d2}} $ las salidas para conseguir $\rojo{\psi}(kT)$
+y $\mora{\omega}(kT)$ respectivamente.
 
-Luego los valores propios del la matriz $A_d$ se calcularon usando el comando de \texttt{aig} de \textit{Matlab} dando los siguientes resultados.
+Luego los valores propios del la matriz $A_d$ se calcularon usando el comando
+de \verb|eig| de \textit{Matlab} dando los siguientes resultados.
 \begin{align}
-  valor propio_{0} &=  0.7386 \\
-  valor propio_{1,2} &=  -0.1745 \pm 0.8588j
+  \lambda_{0} &=  0.7386 \\
+  \lambda_{1,2} &=  -0.1745 \pm 0.8588j
 \end{align}
 
-A continuación, con las matrices discretas  graficaremos en un tiempo de $0 \leq kT \leq 10\ \unit{s}$, las salidas $ \rojo{\psi}(kT)(grados) $ y $ \mora{\omega}(kT)(rpm) $. Que se realizara ayudandonos de \textit{Matlab} con el comando \texttt{ss2tf}  para encontrar el numerador y denominador de la funcion de trasnferencia  y graficando con  \texttt{stem},  con respecto a la entrada dada en \hyperref[pregunta-b]{\texttt{b)}}, pero discretizada siendo la entrada:
+A continuación, con las matrices discretas  graficaremos en un tiempo de
+$0 \leq kT \leq 10\ \unit{s}$, las salidas $ \rojo{\psi}(kT)(grados) $ y
+$ \mora{\omega}(kT)(rpm) $. Que se realizara ayudandonos de \textit{Matlab} con
+el comando \verb|ss2tf|  para encontrar el numerador y denominador de la funcion
+de trasnferencia  y graficando con  \verb|stem|,  con respecto a la entrada
+dada en \hyperref[pregunta-b]{\texttt{b)}}, pero discretizada siendo la entrada:
 
 \begin{equation}
   \verd{v_{i}}(kT) = \frac{\verd{v_{i0}}}{3}\left(r(kT-1) - r(kT-4)\right)
 \end{equation}
 
-
-
-
-
-
-
-
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pf.tex}
+  \caption{Variables de estado del sistema discreto}\label{fig:estado-discreto}
+\end{figure}

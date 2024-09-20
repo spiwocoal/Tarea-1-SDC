@@ -24,7 +24,7 @@ disp (FT_d)
 
 % Valores propio de A_d
 val_pro =eig(A_d);
-disp('Valores propios de matris Ad')
+disp('Valores propios de matriz Ad')
 disp(val_pro)
 
 % Para Calcular ganancia y luego v_i0

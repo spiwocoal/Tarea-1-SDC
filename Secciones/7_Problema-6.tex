@@ -1,8 +1,10 @@
 \section{Pregunta \texttt{f)}}\label{pregunta-f}
 
-Para poder determinar el equivalente discreto nos aprovechamos de la matriz
-resultante en \hyperref[pregunta-b]{\texttt{b)}} que son la que se ven a continuación:
+A continuación, nos interesa determinar un equivalente discreto para el
+sistema, considerando un tiempo de muestreo $T = 200\ \unit{ms}$.
 
+Para esto, vamos a utilizar las matrices del sistema que obtuvimos en la pregunta
+\hyperref[pregunta-b]{\texttt{b)}}:
 \begin{align}
     \pmb{A} &= \begin{bmatrix}
         0 & 1 & 0 \\
@@ -14,24 +16,22 @@ resultante en \hyperref[pregunta-b]{\texttt{b)}} que son la que se ven a continu
         \frac{\nara{b_{1\psi}}\nara{b_{0\omega}}}{\nara{a_{2\psi}}\nara{a_{1\omega}}} \\
         \frac{\nara{b_{0\omega}}}{\nara{a_{1\omega}}}
     \end{bmatrix}
-  \end{align}
-  \begin{align}
-    \pmb{C} = \begin{bmatrix}
-      1 & 0 & 0
-    \end{bmatrix}
-  \end{align}
+\end{align}
+\begin{align}
+  \pmb{C} &= \begin{bmatrix}
+    1 & 0 & 0
+  \end{bmatrix}
+\end{align}
 
-Ahora bien por lo que vimos en Sistemas lineales Dinamicos sabemos que los
-equivalentes discretos de las matrices se puede calcular como:
-
-\[
+De lo visto en el curso de Sistemas Lineales Dinámicos \cite{apunte-sld}, sabemos
+que para obtener el equivalente discreto de estas matrices debemos realizar los
+siguientes cálculos:
+\begin{equation}
 \mathbf{A_d}= e^{\mathbf{A}T} ,\quad \mathbf{B_d}= \int_{0}^{T} e^{\mathbf{A}(T-\sigma)}\mathbf{B}  \,d\sigma 
-\]
+\end{equation}
 
-Donde apoyandonos en los calculos numericos de \textit{Matlab} obtenemos que las
-matrices discretas serian las siguientes :
-
-
+Nos ayudamos entonces de \textit{MATLAB} para determinar los valores de estas
+matrices, y obtenemos:
 \begin{align}
     \mathbf{A_d} &= \begin{bmatrix}
         -0.1106 & 0.0970 & 0.7400 \\
@@ -43,36 +43,36 @@ matrices discretas serian las siguientes :
         0.0710 \\
         0.0046
     \end{bmatrix}
-  \end{align}
-  \begin{align}
-    \pmb{C_{d1}} = \begin{bmatrix}
-      1 & 0 & 0
-    \end{bmatrix}&
-    \pmb{C_{d2}} = \begin{bmatrix}
-      0 & 0& 1
-    \end{bmatrix}
 \end{align}
 
-Siendo $\pmb{C_{d1}} $, $\pmb{C_{d2}} $ las salidas para conseguir $\rojo{\psi}(kT)$
-y $\mora{\omega}(kT)$ respectivamente.
+Además, como la salida del sistema es $\rojo{\psi}$, y no hay perturbaciones,
+se tiene que las matrices $\pmb{C_{d}}$ y $\pmb{D_{d}}$ son:
+\begin{align}
+  \pmb{C_{d}} &= \begin{bmatrix}
+      1 & 0 & 0
+  \end{bmatrix} &
+  \pmb{D_{d}} &= 0
+\end{align}
 
-Luego los valores propios del la matriz $A_d$ se calcularon usando el comando
-de \verb|eig| de \textit{Matlab} dando los siguientes resultados.
+Luego, calculamos los valores propios del sistema. Para esto, se utilizón el
+comando \verb|eig| de \textit{MATLAB}, entonces:
 \begin{align}
   \lambda_{0} &=  0.7386 \\
   \lambda_{1,2} &=  -0.1745 \pm 0.8588j
 \end{align}
 
-A continuación, con las matrices discretas  graficaremos en un tiempo de
-$0 \leq kT \leq 10\ \unit{s}$, las salidas $ \rojo{\psi}(kT)(grados) $ y
-$ \mora{\omega}(kT)(rpm) $. Que se realizara ayudandonos de \textit{Matlab} con
-el comando \verb|ss2tf|  para encontrar el numerador y denominador de la funcion
-de trasnferencia  y graficando con  \verb|stem|,  con respecto a la entrada
-dada en \hyperref[pregunta-b]{\texttt{b)}}, pero discretizada siendo la entrada:
+A continuación, simularemos el sistema para una entrada
+$\verd{v_{i}}(t) = \frac{\verd{v_{i0}}}{3}\left(r(kT-1) - r(kT-4)\right)$
+y un tiempo $0 \leq kT \leq 10\ \unit{s}$, y graficaremos los valores que
+toman las variables de estado para esta entrada. Nuevamente nos ayudamos
+de \textit{MATLAB}, pero esta vez se utilizó el comando \verb|ss2tf| para
+obtener una representación en función de transferencia discreta del sistema,
+para luego, con el comando \verb|filter| simular el sistema para la entrada
+dada. Además, a diferencia del caso continuo, se utilizó el comando \verb|stem|
+en lugar de \verb|plot| para graficar.
 
-\begin{equation}
-  \verd{v_{i}}(kT) = \frac{\verd{v_{i0}}}{3}\left(r(kT-1) - r(kT-4)\right)
-\end{equation}
+El código para realizar los cálculos, simular el sistema y luego graficar está
+disponible en el \autoref{lst:problema-f}.
 
 \begin{figure}[h]
   \centering

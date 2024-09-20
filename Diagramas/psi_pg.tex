@@ -14,15 +14,16 @@ scale only axis,
 xmin=-0.2,
 xmax=10.2,
 xlabel style={font=\color{white!15!black}},
-xlabel={Tiempo (s)},
+xlabel={Tiempo $[\unit{s}]$},
 ymin=0,
 ymax=32,
 ylabel style={font=\color{white!15!black}},
-ylabel={$\psi$ (deg)},
+ylabel={$\rojo{\psi}(t)\ [\unit{deg}]$},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={Ángulo de referencia y la salida obtenida},
-legend style={legend cell align=left, align=left, draw=white!15!black}
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos=north west
 ]
 \addplot[ycomb, color=red, mark=o, mark options={solid, red}] table[row sep=crcr] {%
 0	0\\
@@ -81,7 +82,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 -0.2	0\\
 10.2	0\\
 };
-\addlegendentry{medido}
+\addlegendentry{Ángulo medido $\rojo{\psi_{m}}$}
 
 \addplot[ycomb, color=red, dashed, mark=*, mark options={solid, red}] table[row sep=crcr] {%
 0	0\\
@@ -140,7 +141,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 -0.2	0\\
 10.2	0\\
 };
-\addlegendentry{referencia}
+\addlegendentry{Referencia $\rojo{\psi_{d}}$}
 
 \end{axis}
 \end{tikzpicture}%

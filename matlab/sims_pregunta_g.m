@@ -19,6 +19,7 @@ psi_d = @(t) psi_0 .* k_st .* (rampa(t - 1) - rampa(t - 4)) ./ 3;
 t  = 0:T:10;        % Tiempo de simulación
 
 x_con  = zeros(3, length(t));
+w_d = zeros(1, length(t));
 w_con  = zeros(1, length(t));
 v_icon = zeros(1, length(t));
 
@@ -29,10 +30,13 @@ for i = 1:length(t) - 1
   psi_m = k_st * x(1); % Ángulo medido
   err = psi_d(t_ac) - psi_m;
 
-  w   = err * k_c;
-  v_i = w * k_a;
+  % w_d(i+1) = err * k_c;
+  % v_i = w_con(i) * k_a;
+  w = err * k_c;
+  v_i = w_con(i) * k_a;
   
   x_con(:,i+1) = A_d * x + B_d * v_i;
+  % w_con(i+1)   = w_d(i);
   w_con(i+1)   = w;
   v_icon(i+1)  = v_i;
 end

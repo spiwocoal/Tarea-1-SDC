@@ -1,5 +1,116 @@
 \section{Pregunta \texttt{g)}}\label{pregunta-g}
 
+Nos interesa nuevamente controlar el sistema, pero ahora trabajaremos con el
+sistema discretizado. Al igual que para el caso continuo, comenzaremos utilizando
+un controlador proporcional, de ganancia $\nara{k_{c}}$. El sistema se trabajará
+como un sistema híbrido, y el lazo de control que se utilizará puede verse en
+la \autoref{fig:control-prop-hibrido}. Se ha agregado un retardo al sistema antes
+del retentor que le entregará la señal de entrada al actuador para considerar
+dentro de los cálculos al retardo que ocurre por los cálculos.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    % Suma
+    \node[draw,
+        circle,
+        minimum size=0.6cm,
+        fill=white!50
+    ] (sum) at (0,0){};
+     
+    \draw (sum.north east) -- (sum.south west)
+        (sum.north west) -- (sum.south east);
+     
+    \draw (sum.north east) -- (sum.south west)
+    (sum.north west) -- (sum.south east);
+     
+    \node[left=-2pt] at (sum.center){\tiny $+$};
+    \node[below=-1pt] at (sum.center){\tiny $-$};
+     
+    % Controlador
+    \node [block,
+        color=Emerald,
+        fill=white,
+        right=0.5cm of sum
+      ]  (controller) {$\nara{k_{c}}$};
+
+    % Retardo
+    \node [block,
+        color=Emerald,
+        fill=white,
+        text=black,
+        right=1cm of controller
+      ]  (delay) {$z^{-1}$};
+
+    % Retentor
+    \node [block,
+        color=Orange,
+        fill=white,
+        right=1cm of delay
+      ]  (holder) {S/H};
+    
+    % Actuador
+    \node [block,
+        color=Blue,
+        fill=white, 
+        right=1cm of holder
+      ] (actuator) {$\nara{k_{a}}$};
+     
+    % Sistema H(s)
+    \node [block,
+        color=Blue,
+        fill=white, 
+        text=black,
+        right=1cm of actuator
+      ] (system) {$\sfrac{\rojo{\psi}(s)}{\verd{v_{i}}(s)}$};
+
+    % Muestreador
+    \node [block,
+        color=Orange,
+        fill=white, 
+        below= 1cm of holder
+      ]  (sampler) {S};
+     
+    % Sensor/Transmisor
+    \node [block,
+        color=Blue,
+        fill=white, 
+        right= 2.5cm of sampler
+      ]  (sensor) {$\nara{k_{st}}$};
+     
+    % Arrows with text label
+    \draw[-stealth, Emerald] (sum.east) -- (controller.west)
+        node[midway,above]{};
+
+    \draw[-stealth, Emerald] (controller.east) -- (delay.west)
+        node[midway,above]{$\azul{w_{d}}$};
+
+    \draw[-stealth, Emerald] (delay.east) -- (holder.west)
+        node[midway,above]{};
+
+    \draw[-stealth, Blue] (holder.east) -- (actuator.west) 
+        node[midway,above]{$\azul{w}$};
+    
+    \draw[-stealth, Blue] (actuator.east) -- (system.west) 
+        node[midway,above]{$\verd{v_{i}}$};
+     
+    \draw[-stealth, Blue] (system.east) -- ++ (1.25,0) 
+        node[midway](output){}node[midway,above]{$\rojo{\psi}$};
+     
+    \draw[-stealth, Blue] (output.center) |- (sensor.east);
+     
+    \draw[-stealth, Blue] (sensor.west) -- (sampler.east) 
+        node[midway,above]{$\rojo{\psi_{m}}$};
+
+    \draw[-stealth, Emerald] (sampler.west) -| (sum.south) 
+        node[near end,left]{$\rojo{\psi_{md}}$};
+     
+    \draw[Emerald] (sum.west) -- ++(-1,0) 
+        node[midway,above]{$\rojo{\psi_{d}}$};
+  \end{tikzpicture}
+  \caption{Lazo cerrado de control para el sistema híbrido, con controlador proporcional.}\label{fig:control-prop-hibrido}
+\end{figure}
+
 \begin{figure}[h]
   \centering
   \input{Diagramas/psi_pg.tex}

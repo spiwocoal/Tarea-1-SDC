@@ -33,9 +33,9 @@ Reordenadando la expresión utilizando \textit{MATLAB} obtenemos:
 
 \begin{equation}\label{eq:fdt-LCd}
     \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
-    { z^3 + \left( \nara{k_c k_a k_{st}} \cdot 0.009 - 0.039 \right) z^2 
+    { z^3 + \left( \nara{k_c k_a k_{st}} \cdot 0.009 - 0.3895 \right) z^2 
     + \left( \nara{k_c k_a k_{st}} \cdot 0.0058 + 0.5102 \right) z 
-    - \nara{k_c k_a k_{st}} \cdot 0.0038 + 0.5673 }
+    - \nara{k_c k_a k_{st}} \cdot 0.0038 - 0.5673 }
 \end{equation}
 
 
@@ -101,14 +101,16 @@ que el sistema vaya a ser estable.
 Ahora bien reemplazando $\nara{b_1}$ por los valores correspondientes llegamos a la siguiente inecuación:
 
 \begin{equation}
-    \nara{b_1} = \frac{\nara{k_c}^2  - 0.0455 \nara{k_c} + 0.000225}{-0.0091 \nara{k_c} + 0.000144} > 0
+    \nara{b_1} = \frac{\nara{k_c}^2  +0.0493 \nara{k_c}  -0.000244}{-0.0065 \nara{k_c}  -0.000298} > 0
 \end{equation}
+-0.0458
+
 
 A continuación analizamos las raíces del numerador y del denominador, ya que el valor de la fracción depende de los signos de ambos. La fracción es positiva si el numerador y el denominador tienen el mismo signo (ambos positivos o ambos negativos).
 
 \begin{itemize}
-    \item \textbf{Numerador:} \( \nara{k_c}^2 - 0.0455 \nara{k_c} + 0.000225 = 0 \)
-    \item \textbf{Denominador:} \( -0.0091 \nara{k_c} + 0.000144 = 0 \)
+    \item \textbf{Numerador:} \( \nara{k_c}^2  +0.0493 \nara{k_c}  -0.000244 = 0 \)
+    \item \textbf{Denominador:} \(-0.0065 \nara{k_c}  -0.000298 = 0 \)
 \end{itemize}
 
 Las soluciones para las raíces del numerador y el denominador son las siguientes:

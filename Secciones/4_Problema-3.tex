@@ -110,6 +110,27 @@ de estado del sistema están disponibles en la \autoref{fig:estado-proporcional}
   \caption{Variables de estado del sistema con contolador proporcional..}\label{fig:estado-proporcional}
 \end{figure}
 
+Luego, buscamos los valores propios del sistema en lazo cerrado. Sabemos que
+para un sistema realimentado, con F. de T. en el lazo directo $G(s)$, y en el
+lazo de realimentación $r(s)$, entonces su función de transferencia será
+\begin{equation}\label{eq:fdt-lc}
+    \frac{G(s)}{1 + G(s)r(s)}
+\end{equation}
+
+Entonces, los valores propios del sistema serán los polos de la función de
+transferencia. Buscamos entonces
+\begin{equation}
+  1 + G(s)r(s) = 0
+\end{equation}
+
+Con, $G(s) =  \nara{k_{c} k_{a}} \dfrac{\rojo{\psi}(s)}{\verd{v_{i}(s)}}$, y
+$r(s) = \nara{k_{st}}$. Entonces, resolvemos la ecuación, y obtenemos que los
+autovalores del sistema en L.C. son:
+\begin{align*}
+  \lambda_{0} &= -2.3164 \\
+  \lambda_{1,2} &= -0.2591 \pm 10.4850j
+\end{align*}
+
 \subsection{Comentarios}
 
 Se puede observar de la simulación realizada que el controlador proporcional por

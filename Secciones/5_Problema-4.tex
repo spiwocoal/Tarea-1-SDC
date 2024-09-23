@@ -3,21 +3,12 @@
 Para este apartado nos piden calcular el $\nara{k_{c}}$ que hace al sistema
 marginalmente estable, donde igualmente nos ayudaremos de \textit{MATLAB}, con
 el codigo disponible en \autoref{lst:problema-d}, para hacer los calculos
-de manera symbolica.
+de manera simbólica.
 
-Lo primero que necestiamos es encontrar la función del transferencia de el lazo
-cerrado para luego encontrar los polos de esta.
+Entonces, empezamos por obtener la función de transferencia del sistema para
+cualquier $\nara{k_{c}}$. Para esto, usamos lo visto en \eqref{eq:fdt-lc}.
 
-Sabemos que para un sistema realimentado como aquel visto en \hyperref[pregunta-c]{\texttt{c)}},
-con F. de T. en el lazo directo $G(s)$, y en el lazo de realimentación $r(s)$,
-entonces su función de transferencia será
-
-\begin{equation}
-    \frac{G(s)}{1 + G(s)r(s)}
-\end{equation}
-
-En nuestro caso, se tiene $G(s) = \nara{k_{c} k_{a}} \dfrac{\rojo{\psi}(s)}{\verd{v_i}(s)}$,
-y $r(s) = \nara{k_{st}}$. Por lo tanto, simbólicamente nos queda:
+Símbolicamente entonces se tiene que la función de transferencia es
 \begin{equation}
     \frac{G(s)}{1 + G(s)r(s)} = \dfrac{\nara{k_ck_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
     {\left(\nara{a_{1\omega}}s + \nara{a_{0\omega}}\right)\left(\nara{a_{2\psi}}s^{2} + \nara{a_{1\psi}}s + \nara{a_{0\psi}}\right)}}{1+\nara{k_ck_a} \frac{\nara{\nara{b_{0\omega}}}\left(\nara{b_{1\psi}}s + \nara{b_{0\psi}}\right)}
@@ -25,14 +16,14 @@ y $r(s) = \nara{k_{st}}$. Por lo tanto, simbólicamente nos queda:
 \end{equation}
 
 Reordenadando la expresión utilizando \textit{MATLAB} obtenemos:
-\begin{equation}\label{eq:fdt-lc}
+\begin{equation}\label{eq:fdt-lc-1}
     \frac{(\nara{k_a k_a b_{1\psi} b_{0\psi}})s + \nara{k_a k_a b_{0\psi} b_{0\omega}}}
     {(\nara{a_{2\psi} a_{1\omega}})s^3 + (\nara{a_{1\psi} a_{1\omega} + a_{2\psi} a_{0\omega}})s^2 + (\nara{a_{0\psi} a_{1\omega} + a_{1\psi} a_{0\omega} + k_a k_c k_{st} b_{1\psi} b_{0\omega}})s + \nara{a_{0\psi} a_{0\omega} + k_a k_c k_{st} b_{0\psi} b_{0\omega}}}
 \end{equation}
 
 Nos enfocamos entonces en el denominador que es donde se ecuentran lo polos y
 utilizamos el criterio de Routh-Hurwitz para analizar la estabilidad. Trabajaremos
-entonces con el denominador de \eqref{eq:fdt-lc}, donde $\nara{a_3},\nara{a_2},\nara{a_1},\nara{a_0}$
+entonces con el denominador de \eqref{eq:fdt-lc-1}, donde $\nara{a_3},\nara{a_2},\nara{a_1},\nara{a_0}$
 representan los coeficientes del polinomio:
 \begin{align}
     P(s) = \nara{a_3} s^3 + \nara{a_2} s^2 + \nara{a_1} s + \nara{a_0} &
@@ -89,11 +80,6 @@ Luego, simulamos para esta ganancia tal como se hizo en la pregunta \hyperref[pr
 Se obtiene entonces la salida controlada que se observa en la \autoref{fig:psi-prop-marge}
 y los valores de las variables de estado en la \autoref{fig:estado-prop-marge}.
 
-%% TODO: Explicar como se obtuvo el periodo, tal vez haciendo zoom a una parte
-%%       del grafico...
-Podemos observar que el periodo de la oscilación que ocurre es de aproximadamente
-$500\ \unit{ms}$.
-
 \begin{figure}[h]
   \centering
   \input{Diagramas/psi_pd.tex}
@@ -105,6 +91,20 @@ $500\ \unit{ms}$.
   \input{Diagramas/estado_pd.tex}
   \caption{Variables de estado del sistema con contolador proporcional}\label{fig:estado-prop-marge}
 \end{figure}
+
+Observamos que en estado estacionario el sistema presenta oscilaciones. Buscamos
+determinar el periodo de esta oscilación. Para esto, necesitamos nuevamente determinar
+los autovalores del sistema. Repitiendo el procedimiento utilizado en \hyperref[pregunta-c]{\texttt{c)}}
+vemos que los polos del sistema son
+\begin{align*}
+    \lambda_{0} &= -2.8332 \\
+    \lambda_{1,2} &= \pm 12.1739j
+\end{align*}
+
+Entonces, el periodo de oscilación es
+\begin{equation}
+    T = \frac{2\pi}{\mathfrak{Im}(\lambda_{1})} = 516\ \unit{ms}
+\end{equation}
 
 \subsection{Comentarios}
 

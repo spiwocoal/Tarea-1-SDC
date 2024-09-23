@@ -282,4 +282,8 @@ Como $T= 0.2$ decir cada $1.6491 \unit{s}$
 
 \subsection{Comentarios}
 
-Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.
+Con respecto al desarrollo, podemos notar que la función de transferencia (\eqref{eq:fdt-LCdi}) es de orden 4, y esto se debe a que el retardo por cálculo ($z^{-1}$) y el término ($\sfrac{1}{z-1}$) aportan un orden adicional a la F.de T. del lazo cerrado.
+
+Además, en este caso observamos que los gráficos de referencia y salida llegan al valor de referencia, a diferencia de \hyperref[pregunta-h]{\texttt{h)}}. Esto se debe a que utilizamos un controlador integral $\left(\frac{\nara{k_c}}{z-1}\right)$, el cual es capaz de eliminar el error en estado estacionario, lo que permite que el sistema alcance la altura de referencia.
+
+

@@ -161,4 +161,13 @@ Como $T= 0.2$ es decir cada $1.259 \unit{s}$
 
 \subsection{Comentarios}
 
-Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.
+
+Con respecto al desarrollo, podemos notar que la función de transferencia 
+(\eqref{eq:fdt-LCd}) es de orden 4, y esto se debe a que el retardo por cálculo
+ ($z^{-1}$) aporta un orden adicional a la F.de T. del lazo cerrado.
+
+También, al analizar los gráficos de salida con respecto a la entrada de 
+referencia, observamos que no alcanza el valor de referencia. Esto se debe a 
+que estamos utilizando un controlador proporcional $\nara{k_c}$, el cual no 
+logra alcanzar la altura deseada debido a un error en estado estacionario.
+

@@ -1,0 +1,142 @@
+\section{Pregunta \texttt{i)}}\label{pregunta-i}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    % Suma
+    \node[draw,
+        circle,
+        minimum size=0.6cm,
+        fill=white!50
+    ] (sum) at (0,0){};
+     
+    \draw (sum.north east) -- (sum.south west)
+        (sum.north west) -- (sum.south east);
+     
+    \draw (sum.north east) -- (sum.south west)
+    (sum.north west) -- (sum.south east);
+     
+    \node[left=-2pt] at (sum.center){\tiny $+$};
+    \node[below=-1pt] at (sum.center){\tiny $-$};
+     
+    % Controlador
+    \node [block,
+        color=Emerald,
+        fill=white,
+        text=black,
+        right=0.5cm of sum
+      ]  (controller) {$\sfrac{\nara{k_{c}}}{(z - 1)}$};
+
+    % Retardo
+    \node [block,
+        color=Emerald,
+        fill=white,
+        text=black,
+        right=1cm of controller
+      ]  (delay) {$z^{-1}$};
+
+    % Retentor
+    \node [block,
+        color=Orange,
+        fill=white,
+        right=1cm of delay
+      ]  (holder) {S/H};
+    
+    % Actuador
+    \node [block,
+        color=Blue,
+        fill=white, 
+        right=1cm of holder
+      ] (actuator) {$\nara{k_{a}}$};
+     
+    % Sistema H(s)
+    \node [block,
+        color=Blue,
+        fill=white, 
+        text=black,
+        right=1cm of actuator
+      ] (system) {$\sfrac{\rojo{\psi}(s)}{\verd{v_{i}}(s)}$};
+
+    % Muestreador
+    \node [block,
+        color=Orange,
+        fill=white, 
+        below= 1cm of holder
+      ]  (sampler) {S};
+     
+    % Sensor/Transmisor
+    \node [block,
+        color=Blue,
+        fill=white, 
+        right= 2.5cm of sampler
+      ]  (sensor) {$\nara{k_{st}}$};
+     
+    % Arrows with text label
+    \draw[-stealth, Emerald] (sum.east) -- (controller.west)
+        node[midway,above]{};
+
+    \draw[-stealth, Emerald] (controller.east) -- (delay.west)
+        node[midway,above]{$\azul{w_{d}}$};
+
+    \draw[-stealth, Emerald] (delay.east) -- (holder.west)
+        node[midway,above]{};
+
+    \draw[-stealth, Blue] (holder.east) -- (actuator.west) 
+        node[midway,above]{$\azul{w}$};
+    
+    \draw[-stealth, Blue] (actuator.east) -- (system.west) 
+        node[midway,above]{$\verd{v_{i}}$};
+     
+    \draw[-stealth, Blue] (system.east) -- ++ (1.25,0) 
+        node[midway](output){}node[midway,above]{$\rojo{\psi}$};
+     
+    \draw[-stealth, Blue] (output.center) |- (sensor.east);
+     
+    \draw[-stealth, Blue] (sensor.west) -- (sampler.east) 
+        node[midway,above]{$\rojo{\psi_{m}}$};
+
+    \draw[-stealth, Emerald] (sampler.west) -| (sum.south) 
+        node[near end,left]{$\rojo{\psi_{md}}$};
+     
+    \draw[Emerald] (sum.west) -- ++(-1,0) 
+        node[midway,above]{$\rojo{\psi_{d}}$};
+  \end{tikzpicture}
+  \caption{Lazo cerrado de control para el sistema híbrido, con controlador integrador.}\label{fig:control-prop-hibrido}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/psi_pi.tex}
+  \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pi.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
+\end{figure}
+
+\FloatBarrier
+
+\begin{equation}
+    \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
+    { z^5 -1.3895z^4 + 0.8998z^3 + \left( 0.009\nara{k_c k_a k_{st}}  -1.0775 \right) z^2 
+    + \left(0.0058 \nara{k_c k_a k_{st}}   + 0.5673 \right) z 
+    -0.0038 \nara{k_c k_a k_{st}} }
+\end{equation}
+
+
+Ahora bien para el calculo del \nara{kc} en este apartado se procedera al igual que en el apartado \hyperref[pregunta-h]{\texttt{h)}}.
+
+Comenzado para este caso, se tiene $G(z) = \frac{k_{c}}{z-1}\nara{ k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
+y $r(z) = \nara{k_{st}}$. Por lo tanto nuestra Funcion de transferencia de lazo cerrado sera,
+\begin{equation}
+    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\nara{k_ck_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}}
+    {1+\nara{k_ck_a} z^{-1} \frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}\nara{k_{st}}}
+\end{equation}
+
+\subsection{Comentarios}
+
+Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.

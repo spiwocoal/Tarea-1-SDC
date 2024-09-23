@@ -207,9 +207,25 @@ con el $\nara{k_{c}}$ que hace al sistema marginalmente estable:
 
 Entonces, el periodo de oscilación es
 \begin{equation}
-  T = \frac{2\pi}{\lambda_{2}} = 725\ \unit{ms}
+  T = \frac{2\pi}{\mathfrak{\lambda_{2}}} = 725\ \unit{ms}
 \end{equation}
 
 \subsection{Comentarios}
 
-Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.
+Podemos observar que para este sistema con controlador integrador, a diferencia
+del caso con controlador proporcional, el sistema sí llega al valor de referencia.
+
+Esto se debe a que el controlador de tipo integrador es capaz de actuar sobre el
+error cuando su dinámica es nula, a diferencia del controlador tipo proporcional.
+Gracias a esto, cuando el sistema pasa a estar en estado estacionario, la salida
+llega a tomar el nivel de la referencia.
+
+Otra cosa que se puede observar es que, puesto que el controlador integrador
+agrega dinámica al sistema, éste pasó de ser un sistema de orden $3$ en L.A. a
+uno de orden $4$ en L.C, lo cual se refleja en que tenga $4$ autovalores en lugar
+de $3$.
+
+Respecto al comportamiento de este cuando el $\nara{k_{c}}$ hace que sea
+marginalmente estable, vemos que al igual que como se observó en la \autoref{fig:psi-prop-marge}
+para el controlador proporcional, existe una oscilación en el estado estacionario
+del sistema debido a su estabilidad.

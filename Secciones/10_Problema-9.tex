@@ -104,6 +104,39 @@
   \caption{Lazo cerrado de control para el sistema híbrido, con controlador integrador.}\label{fig:control-prop-hibrido}
 \end{figure}
 
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/psi_pi.tex}
+  \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pi.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
+\end{figure}
+
+\FloatBarrier
+
+\begin{equation}
+    \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
+    { z^5 -1.3895z^4 + 0.8998z^3 + \left( 0.009\nara{k_c k_a k_{st}}  -1.0775 \right) z^2 
+    + \left(0.0058 \nara{k_c k_a k_{st}}   + 0.5673 \right) z 
+    -0.0038 \nara{k_c k_a k_{st}} }
+\end{equation}
+
+
+Ahora bien para el calculo del \nara{kc} en este apartado se procedera al igual que en el apartado \hyperref[pregunta-h]{\texttt{h)}}.
+
+Comenzado para este caso, se tiene $G(z) = \frac{k_{c}}{z-1}\nara{ k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
+y $r(z) = \nara{k_{st}}$. Por lo tanto nuestra Funcion de transferencia de lazo cerrado sera,
+\begin{equation}
+    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\nara{k_ck_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}}
+    {1+\nara{k_ck_a} z^{-1} \frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}\nara{k_{st}}}
+\end{equation}
+
 \subsection{Comentarios}
 
 Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.

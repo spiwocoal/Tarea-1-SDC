@@ -1,6 +1,18 @@
 \section{Pregunta \texttt{h)}}\label{pregunta-h}
+%% aqui rodo lo matematico para el ks con retardo para luego cambiar arriba
 
-%PONDRE LAS COSAS LUEGO ESCRIBO
+
+F.de.T lazo cerrado discreto h) (con retardo)
+bien
+\begin{equation}
+    \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
+    { z^4 -0.3895z^3 + \left( \nara{k_c k_a k_{st}} \cdot 0.009 + 0.5102
+    \right) z^2 
+    + \left( \nara{k_c k_a k_{st}} \cdot0.0058 -0.5673 \right) z 
+    - \nara{k_c k_a k_{st}} \cdot 0.0038 }
+\end{equation}
+
+%%
 
 En este apartado tenemos que determinar el $\nara{k_c}$  que hace el sistema
 marginalmente estable y simular como en \hyperref[pregunta-g]{\texttt{g)}}. Para
@@ -18,132 +30,121 @@ en el lazo de realimentación $r(z)$, entonces su función de transferencia ser�
     \frac{G(z)}{1 + G(z)r(z)}
 \end{equation}
 
-En nuestro caso, se tiene $G(z) = \nara{k_{c} k_{a}} \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
+En nuestro caso, se tiene $G(z) = \nara{k_{c} k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
 y $r(z) = \nara{k_{st}}$. Por lo tanto,
 \begin{equation}
-    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\nara{k_ck_a} \frac{0.008997z^2 + 0.005767 z - 0.003827}
+    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\nara{k_ck_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
     {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}}
-    {1+\nara{k_ck_a} \frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {1+\nara{k_ck_a} z^{-1} \frac{0.008997z^2 + 0.005767 z - 0.003827}
     {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}\nara{k_{st}}}
 \end{equation}
 
 Reordenadando la expresión utilizando \textit{MATLAB} y obtenemos:
 \begin{equation}\label{eq:fdt-LCd}
-    \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
-    { z^3 + \left( \nara{k_c k_a k_{st}} \cdot 0.009 - 0.3895 \right) z^2 
-    + \left( \nara{k_c k_a k_{st}} \cdot 0.0058 + 0.5102 \right) z 
-    - \nara{k_c k_a k_{st}} \cdot 0.0038 - 0.5673 }
+        \frac{ \nara{k_c k_a} \left( 0.009 z^2 + 0.0058 z - 0.0038 \right)}
+        { z^4 -0.3895z^3 + \left( \nara{k_c k_a k_{st}} \cdot 0.009 + 0.5102
+        \right) z^2 
+        + \left( \nara{k_c k_a k_{st}} \cdot0.0058 -0.5673 \right) z 
+        - \nara{k_c k_a k_{st}} \cdot 0.0038 }
 \end{equation}
 
 Nos enfocamos entonces en el denominador que es donde se ecuentran lo polos y
 utilizamos el criterio de Routh-Hurwitz para analizar la estabilidad. 
-Trabajaremos entonces con el denominador de \eqref{eq:fdt-LCd}, donde $\nara{a_2},\nara{a_1},\nara{a_0}$
+Trabajaremos entonces con el denominador de \eqref{eq:fdt-LCd}, donde $\nara{a_3},\nara{a_2},\nara{a_1},\nara{a_0}$
 representan los coeficientes del polinomio:
 \begin{align}
-    P(z) =  z^3 + \nara{a_2} z^2 + \nara{a_1} z + \nara{a_0} &
+    P(z) = z^4 \nara{a_3}z^3 + \nara{a_2} z^2 + \nara{a_1} z + \nara{a_0} &
 \end{align}
 
 Para estudiar la estabilidad del sistema ocuparemos el método de transformación
 bilineal y el criterio para estabilidad Routh-Hurwitz como mencionamos, entonces
 primero definimos la transformación bilineal, en la cual se reemplaza $z$, tal que 
 \begin{equation}
-    z = \frac{w+1}{w-1}
+    z = \frac{w+1}{1-w}
 \end{equation}
 
 Ahora sustituimos $z$ en el polinomio característico:
 \begin{equation}
-    P(z) = (\frac{w+1}{w-1})^3 + \nara{a_2} (\frac{w+1}{w-1})^2 + \nara{a_1} (\frac{w+1}{w-1}) + \nara{a_0}
+    P(z) = (\frac{w+1}{1-w})^4 + \nara{a_3}(\frac{w+1}{1-w})^3 + \nara{a_2} (\frac{w+1}{1-w})^2 + \nara{a_1} (\frac{w+1}{1-w}) + \nara{a_0}
 \end{equation}
 
-Luego, se multiplica por $(w-1)^3$:
+Luego, se multiplica por $(1-w)^4$:
 \begin{equation}
-    P(z) =  ({w+1})^3 + \nara{a_2} ({w+1})^2 (w-1) + \nara{a_1} ({w+1})(w-1)^2 + \nara{a_0}(w-1)^3
+    P(z) = ({w+1})^4+ \nara{a_3}({w+1})^3(1-w)  + \nara{a_2} ({w+1})^2 (1-w) ^2+ \nara{a_1} ({w+1})(1-w)^3 + \nara{a_0}(1-w)^4
 \end{equation}
+
 
 Resolvemos los productos, distribuimos y reordenamos obteniendo:
 \begin{align}
-  P(z) &= (\nara{a_0} + \nara{a_1} + \nara{a_2} + 1) w^3 
-    + (\nara{a_2} - \nara{a_1} - 3\nara{a_0} + 3) w^2 \nonumber \\ 
-    &+ (3\nara{a_0} - \nara{a_1} - \nara{a_2} + 3) w 
-    (- \nara{a_0} + \nara{a_1} - \nara{a_2} + 1)
+  P(z) &= (\nara{a_0} - \nara{a_1} + \nara{a_2} -\nara{a_3} + 1)w^4 +( 2\nara{a_1} - 4\nara{a_0} - 2 \nara{a_3} +4 ) w^3  
+    + ( 6\nara{a_0} - 2\nara{a_2} +6 ) w^2 \nonumber \\
+    &+ (2\nara{a_3} - 2\nara{a_1} - 4\nara{a_0} + 4 ) w +
+    (\nara{a_0} + \nara{a_1} + \nara{a_2} +\nara{a_3} + 1)
 \end{align}
 
 Construimos entonces la tabla para el criterio de Routh-Hurwitz, y observamos
 que no hay ceros presentes en la columan pivote:
 \begin{equation}
-  \begin{array}{c|cc}
-    s^3 & (\nara{a_0} + \nara{a_1} + \nara{a_2} + 1) & (3\nara{a_0} - \nara{a_1} - \nara{a_2} + 3)  \\
-    s^2 & (\nara{a_2} - \nara{a_1} - 3\nara{a_0} + 3)  & (- \nara{a_0} + \nara{a_1} - \nara{a_2} + 1) \\
-    s^1 & \nara{b_1} & 0 \\
-    s^0 & \nara{b_0} & 
+  \begin{array}{c|ccc}
+    w^4 & (\nara{a_0} - \nara{a_1} + \nara{a_2} -\nara{a_3} + 1) & ( 6\nara{a_0} - 2\nara{a_2} +6 )  &  (\nara{a_0} + \nara{a_1} + \nara{a_2} +\nara{a_3} + 1)\\
+    w^3 &( 2\nara{a_1} - 4\nara{a_0} - 2 \nara{a_3} +4 )   &(2\nara{a_3} - 2\nara{a_1} - 4\nara{a_0} + 4 )  & 0\\
+    w^2 & \nara{b_1} &  (\nara{a_0} + \nara{a_1} + \nara{a_2} +\nara{a_3} + 1)\\
+    w^1 & \nara{b_0} &  \\
+    w^0 &    (\nara{a_0} + \nara{a_1} + \nara{a_2} +\nara{a_3} + 1)  & 
   \end{array}
 \end{equation}
 
 Donde sabemos que:
 \begin{align}
-  \nara{b_1} = \frac{(\nara{a_2} - \nara{a_1} - 3\nara{a_0} + 3) (3\nara{a_0} - \nara{a_1} - \nara{a_2} + 3) - (\nara{a_0} + \nara{a_1} + \nara{a_2} + 1)(- \nara{a_0} + \nara{a_1} - \nara{a_2} + 1)}{(\nara{a_2} - \nara{a_1} - 3\nara{a_0} + 3)},\quad
-  \nara{b_0} = \nara{a_0}
+  \nara{b_1} &= \frac{( 2\nara{a_1} - 4\nara{a_0} - 2 \nara{a_3} +4 )( 6\nara{a_0} - 2\nara{a_2} +6 )- (\nara{a_0} - \nara{a_1} + \nara{a_2} -\nara{a_3} + 1)(2\nara{a_3} - 2\nara{a_1} - 4\nara{a_0} + 4 ) }{( 2\nara{a_1} - 4\nara{a_0} - 2 \nara{a_3} +4 ) },\\ 
+  \nara{b_0} &= \frac{\nara{b_1} (2\nara{a_3} - 2\nara{a_1} - 4\nara{a_0} + 4 ) -( 2\nara{a_1} - 4\nara{a_0} - 2 \nara{a_3} +4 ) (\nara{a_0} + \nara{a_1} + \nara{a_2} +\nara{a_3} + 1) }{\nara{b_1}}
 \end{align}
 
 Para tener estabilidad en el sistema, los coeficientes de la primera columna
-deben ser todos positivos. Entonces, la condición $\nara{b_1} > 0$ garantiza
+deben ser todos positivos. Entonces, la condición $\nara{b_1} > 0 \land \nara{b_0>0}$ garantiza
 que el sistema vaya a ser estable.
 
 Ahora bien reemplazando $\nara{b_1}$ por los valores correspondientes llegamos
-a la siguiente inecuación:
+a la siguiente inecuación: %%
 \begin{equation}
-    \nara{b_1} = \frac{\nara{k_c}^2  +0.0493 \nara{k_c}  -0.000244}{-0.0065 \nara{k_c}  -0.000298} > 0
+    \nara{b_1} = \frac{\nara{k_c}^2  +0.0034 \nara{k_c}  -0.000207}{-0.0043
+    \nara{k_c}  -0.0001017} > 0
 \end{equation}
--0.0458
-
-
-A continuación, analizamos las raíces del numerador y del denominador, ya que
-el valor de la fracción depende de los signos de ambos. La fracción es positiva
-si el numerador y el denominador tienen el mismo signo (ambos positivos o ambos
-negativos).
-\begin{itemize}
-    \item \textbf{Numerador:} \( \nara{k_c}^2  +0.0493 \nara{k_c}  -0.000244 = 0 \)
-    \item \textbf{Denominador:} \(-0.0065 \nara{k_c}  -0.000298 = 0 \)
-\end{itemize}
-
-Las soluciones para las raíces del numerador y el denominador son las siguientes:
-\begin{itemize}
-    \item Para el numerador: \( \nara{k_c} = 0.0056 \) y \( \nara{k_c} = 0.0399 \)
-    \item Para el denominador: \( \nara{k_c} = 0.0158 \)
-\end{itemize}
-
-Ahora, para que la fracción sea mayor que cero, debemos analizar los intervalos
-donde el numerador y el denominador tienen el mismo signo.
-\begin{enumerate}
-    \item \( \nara{k_c} < 0.0056 \)
-    \item \( 0.0056 < \nara{k_c} < 0.0158 \)
-    \item \( 0.0158 < \nara{k_c} < 0.0399 \)
-    \item \( \nara{k_c} > 0.0399 \)
-\end{enumerate}
-
-Los signos del numerador y del denominador en los intervalos evaluados son los siguientes:
-\begin{itemize}
-    \item Para \( \nara{k_c} = 0.005 \): el numerador y el denominador son \textbf{positivos}.
-    \item Para \( \nara{k_c} = 0.01 \): el numerador es \textbf{negativo} y el denominador es \textbf{positivo}.
-    \item Para \( \nara{k_c} = 0.02 \): tanto el numerador como el denominador son \textbf{negativos}.
-    \item Para \( \nara{k_c} = 0.04 \): el numerador es \textbf{positivo} y el denominador es \textbf{negativo}.
-\end{itemize}
-
-Por lo tanto, la fracción sera mayor que cero cuando el numerador y el denominador,
-tengan el mismo signo. Esto ocurre en los siguientes intervalos:
-% \begin{align}
-%   &\nara{k_c} < 0.0056 \\ %\quad \text{(numerador y denominador son positivos)} \\
-%   0.0158 < &\nara{k_c} < 0.0399 % \quad \text{(numerador y denominador son negativos)}
-% \end{align}
-\begin{align}
-  \nara{k_c} &< 0.0056 \quad \text{(numerador y denominador son positivos)} \\
-  0.0158 < \nara{k_c} &< 0.0399 \quad \text{(numerador y denominador son negativos)}
-\end{align}
-
-En conclusión, los valores de $\nara{k_c}$ que cumplen la condición son:
 \begin{equation}
-  \nara{k_c} < 0.0056 \quad \lor \quad 0.0158 < \nara{k_c} < 0.0399
+    \nara{b_0} = \frac{\nara{k_c}^3  + 0.1088\nara{k_c}^2  +0.000827 \nara{k_c} +0.0000112}{0.0161\nara{k_c}^2   +0.0000554\nara{k_c} -000000333} > 0
 \end{equation}
 
-%0.0399 no es por que hace negativo la columna pivote por lo que creo que es 0.0056
+Donde con \textit{MATLAB} obtenemos los valores de $\nara{k_c}$ que cumplen la condición por separado siendo los siguientes:
+
+\vspace*{0.2cm}
+
+    \begin{multicols}{2}
+        Para $\nara{b_1}$: 
+        \begin{align}
+            \nara{k_{c0}} & = -0.0162 \\
+            \nara{k_{c1}} & = 0.0128
+        \end{align}
+
+        \columnbreak
+        
+        Para $\nara{b_0}$:
+        \begin{align}
+            \nara{k_{c2}} & = 0.0069 \\
+            \nara{k_{c3}} & = -0.0163 \\
+            \nara{k_{c4}} & = -0.0163
+        \end{align}
+    \end{multicols}
+
+Probando los valores donde \( k_c > 0 \) en \textit{MATLAB}, vemos cuál cumple la condición del criterio de Routh-Hurwitz, que consiste en que la columna pivote sea completamente positiva.
+
+\begin{equation}
+    \nara{k_{c}}  < 0.0069
+\end{equation}
+
+Ahora bien para que el sistema sea estable entonces se debe cumplir lo anterior. Pero 
+como solo nos interesa que sea marginalmente estable, entonces el $\nara{k_{c}}$
+que hace que el sistema lo sea es:
+\begin{equation}
+    \boxed{\nara{k_c} = 0.0069}
+\end{equation}
 

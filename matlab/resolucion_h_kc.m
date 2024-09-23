@@ -35,3 +35,7 @@ w3=subs(2*a1 - 4*a0 - 2*a3 + 4)
 w21=subs(b1)
 w1=subs(b0)
 w0=subs(a0 + a1 + a2 + a3 + 1)
+
+%valores propios para calular periodo de oscilación
+den_LCDh=[1 -0.3895 (0.0090*ka*kst*kc+0.5102) (0.0058*ka*kst*kc-0.5673) (-0.0038*ka*kst*kc)];
+polos = roots(den_LCDh)

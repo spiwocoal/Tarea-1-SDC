@@ -57,3 +57,6 @@ w3=subs(b3)
 w2=subs(b1)
 w1=subs(b0)
 w0=subs(A0)
+%valores propios para calular periodo de oscilación
+den_LCDi= [1 -1.3895 0.8998 (0.009*ka*kst*kc-1.0775) (0.0058*ka*kst*kc+0.5673) (-0.0038*ka*kst*kc)];
+polos = roots(den_LCDi)

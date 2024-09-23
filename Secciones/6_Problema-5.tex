@@ -94,6 +94,16 @@ Entonces, las gráficas de las variables del sistema están disponibles en la
   \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-integral}
 \end{figure}
 
+Luego, para determinar los autovalores del sistema, tal como se hizo en 
+\hyperref[pregunta-c]{\texttt{c)}}, determinamos la función de transferencia,
+esta vez con $G(s) = \sfrac{\nara{k_{c}}}{s} \nara{k_{a}} \dfrac{\rojo{\psi}(s)}{\verd{v_{i}(s)}}$.
+Entonces, nuevamente utilizamos \textit{MATLAB} para resolver $1 + G(s)r(s) = 0$,
+y obtenemos que los autovalores del sistema son:
+\begin{align*}
+  \lambda_{0,1} &= -0.9580 \pm 0.9117j \\
+  \lambda_{2,3} &= -0.4593 \pm 8.7836j
+\end{align*}
+
 \FloatBarrier
 
 Queremos ahora encontrar el valor de $\nara{k_c}$ para que el sistema sea
@@ -151,7 +161,6 @@ deben ser todos positivos. Entonces se tiene la condición $\nara{b_{1}} > 0$
 y $\nara{c_{1}} > 0$.
 
 De \eqref{eq:polinomio-prob-e} notamos que $\nara{k_{c}}$ sólo está presente
-en $\nara{a_{0}}$, entonces despejamos $\nara{k_{c}}$:
 \begin{align} 
   \frac{\nara{a_3 a_2} - \nara{a_4 a_1}}{\nara{a_3}} &> 0 \\
   \nara{a_3 a_2} - \nara{a_4 a_1} &> 0 \\
@@ -186,3 +195,21 @@ Por lo que se debe cumplir lo anterior para que sea estable, entonces si queremo
   \caption{Variables de estado del sistema con contolador integrador, marginalmente estable}\label{fig:estado-marge-int}
 \end{figure}
 
+A continuación, observamos nuevamente que para el $\nara{k_{c}}$ que hace que el
+sistema sea marginalmente estable, existen oscilaciones en la salida del sistema.
+Entonces, buscamos determinar su periodo de oscilación. Al igual que para el caso
+con el controlador proporcional, determinamos nuevamente los autovalores del sistema
+con el $\nara{k_{c}}$ que hace al sistema marginalmente estable:
+\begin{align*}
+  \lambda_{0,1} &= -1.5374 \pm 2.0396j \\
+  \lambda_{2,3} &= \pm 8.6644j
+\end{align*}
+
+Entonces, el periodo de oscilación es
+\begin{equation}
+  T = \frac{2\pi}{\lambda_{2}} = 725\ \unit{ms}
+\end{equation}
+
+\subsection{Comentarios}
+
+Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.

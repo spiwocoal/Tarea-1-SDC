@@ -1,4 +1,4 @@
-%% Ejercio h obtencion kc
+%% Ejercicio h obtencion kc
 syms a3 a2 a1 a0 w kc  ;
 
 %Obtener pz ordenado
@@ -32,6 +32,6 @@ kc =0.0068; %aqui vamos provando kc caso kc<0.0069
 
 w4=subs(a0 - a1 + a2 - a3 + 1)
 w3=subs(2*a1 - 4*a0 - 2*a3 + 4)
-b1=subs(b1)
-b0=subs(b0)
+w21=subs(b1)
+w1=subs(b0)
 w0=subs(a0 + a1 + a2 + a3 + 1)

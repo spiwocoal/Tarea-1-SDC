@@ -135,6 +135,30 @@ que hace que el sistema lo sea es:
     \boxed{\nara{k_c} = 0.0069}
 \end{equation}
 
+Ahora bien para determinar el perido de oscilación primero primero econtramos los valores propios como en  \hyperref[pregunta-c]{\texttt{c)}}.
+
+Entonces, los valores propios del sistema serán los polos de la función de
+transferencia. Buscamos entonces
+\begin{equation}
+  1 + G(z)r(z) = 0
+\end{equation}
+
+Con, $G(z) =  \nara{k_{c} k_{a}} z^{-1} \dfrac{\rojo{\psi}(z)}{\verd{v_{i}(z)}}$, y
+$r(s) = \nara{k_{st}}$. Entonces, resolvemos la ecuación, y obtenemos que los
+autovalores del sistema en L.C. discreto son:
+\begin{align*}
+  \lambda_{0} &= 0.5978\\
+  \lambda_{1} &= -0.2488\\
+  \lambda_{2,3} &= 0.0203 \pm 0.9975j
+\end{align*}
+
+Entonces, el periodo de oscilación es
+\begin{equation}
+    T = \frac{2\pi}{\mathfrak{Im}(\lambda_{2})} = 6.298\ \unit{T s} 
+\end{equation}
+
+es decir cada $1.2 \unit{s}$ 
+
 \subsection{Comentarios}
 
 Aqui van a ir los comentarios \textbf{NO OLVIDAR!!}.

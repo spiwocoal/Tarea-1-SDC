@@ -86,7 +86,39 @@ disponible en el \autoref{lst:problema-f}.
 
 Podemos ver de este sistema discretizado que sigue bastante bien a la salida que
 se obtuvo en el apartado \hyperref[pregunta-b]{\texttt{b)}}. Tanto la salida del
-sistema $\rojo{\psi}$, como las variables de estado coinciden con los valores que
-se observaron para el sistema continuo. El pequeño error existente entre el sistema
-discreto y el continuo se pueden atribuir a posibles errores numéricos del computador,
-como los que podrían ocurrir al calcular la integral para el vector $\mathbf{B_{d}}$.
+sistema $\rojo{\psi}$, como las variables de estado coinciden con los valores 
+que
+se observaron para el sistema continuo. El pequeño error existente entre el 
+sistema
+discreto y el continuo se pueden atribuir a posibles errores numéricos del 
+computador,
+como los que podrían ocurrir al calcular la integral para el vector $\mathbf{B_
+{d}}$.
+
+Ahora bien los valores propios en tiempo continuo y discreto están relacionados 
+a través de la fórmula, $z = e^{\lambda T}$ .
+Esto significa que los valores propios discretos son una función exponencial de 
+los valores propios continuos escalados por el tiempo de muestreo \( T \). Para 
+los valores propios obtenidos en continuo, por lo que en nuestro caso continuos 
+obtuvimos :
+
+\begin{align}
+  \lambda_{0} &= -1.5152 \\
+  \lambda_{1,2} &= -0.6692 \pm 8.9192j
+\end{align}
+y al aplicar la aplicar la transformación discreta con \( T = 0.2   \unit{s} 
+\), se obtienen:
+
+\begin{align}
+  \lambda_{0} &= 0.7386 \\
+  \lambda_{1,2} &= -0.1745 \pm 0.8588j
+\end{align}
+
+Esto refleja cómo la dinámica del sistema continuo, incluyendo el 
+comportamiento oscilatorio, se traduce en el dominio discreto. Los polos 
+permanecen estables, pero la discretización cambia ligeramente la 
+representación de las oscilaciones y amortiguamientos, como se aprecian en los 
+graficos.
+
+
+

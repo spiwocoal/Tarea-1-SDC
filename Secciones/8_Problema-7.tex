@@ -124,9 +124,12 @@ tendrá la forma:
 
 Donde, $G(z)$ es la F. de T. del lazo directo, mientras que $r(z)$ la del lazo
 de realimentación. Entonces, queremos determinar $G(z)$:
+
 \begin{align}
   G(z) &= \nara{k_{c}}z^{-1} \cdot \sfrac{\rojo{\psi}(z)}{\verd{v_{i}}(z)} \\
-  &\text{Utilizamos \verb|ss2tf| de \textit{MATLAB}} \\
+\end{align}
+Utilizamos \verb|ss2tf| de \textit{MATLAB} 
+\begin{align}
   G(z) &= \nara{k_{c}}z^{-1} \cdot \frac{0.009z^{2} + 0.0058z - 0.0038}{z^{3} - 0.3895z^{2} + 0.5102z - 0.5673} \\
   G(z) &= \nara{k_{c}}\frac{0.009z^{2} + 0.0058z - 0.0038}{z^{4} - 0.3895z^{3} + 0.5102z^{2} - 0.5673z}
 \end{align}

@@ -1,0 +1,147 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.856\textwidth,
+height=0.3\textheight,
+at={(0\textwidth,0\textheight)},
+scale only axis,
+xmin=-0.2,
+xmax=10.2,
+xlabel style={font=\color{white!15!black}},
+xlabel={Tiempo $[\unit{s}]$},
+ymin=0,
+ymax=32,
+ylabel style={font=\color{white!15!black}},
+ylabel={$\rojo{\psi}(t)\ [\unit{deg}]$},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Ángulo de referencia y la salida obtenida},
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos=north west
+]
+\addplot[ycomb, color=red, mark=o, mark options={solid, red}] table[row sep=crcr] {%
+0	0\\
+0.2	0\\
+0.4	0\\
+0.6	0\\
+0.8	0\\
+1	0\\
+1.2	0\\
+1.4	0\\
+1.6	0.711373774163515\\
+1.8	2.15583416782787\\
+2	2.96727127678142\\
+2.2	3.13868150271531\\
+2.4	3.96527933876359\\
+2.6	5.49744118249675\\
+2.8	6.42417570737134\\
+3	6.6295761871487\\
+3.2	7.41676017161438\\
+3.4	8.95652122244994\\
+3.6	9.94931998192311\\
+3.8	10.1656433883736\\
+4	10.8964904246717\\
+4.2	12.428412076234\\
+4.4	13.4806414831996\\
+4.6	12.9980677147469\\
+4.8	12.2266687725477\\
+5	12.9328180841293\\
+5.2	13.8713156614591\\
+5.4	13.2906804126906\\
+5.6	12.3747140339703\\
+5.8	12.945953955747\\
+6	13.9066127161658\\
+6.2	13.3875493294455\\
+6.4	12.4087346789176\\
+6.6	12.8892861717738\\
+6.8	13.8932847535089\\
+7	13.4576251917569\\
+7.2	12.4334925514403\\
+7.4	12.8251541575458\\
+7.6	13.8686240154401\\
+7.8	13.5225543286843\\
+8	12.4621254011108\\
+8.2	12.7620141317087\\
+8.4	13.837533611279\\
+8.6	13.5846560601798\\
+8.8	12.4961473553583\\
+9	12.7013902670175\\
+9.2	13.800824737526\\
+9.4	13.6437911049615\\
+9.6	12.5355478905555\\
+9.8	12.6439048699239\\
+10	13.7588243723087\\
+};
+\addplot[forget plot, color=white!15!black] table[row sep=crcr] {%
+-0.2	0\\
+10.2	0\\
+};
+\addlegendentry{Ángulo medido $\rojo{\psi_{m}}$}
+
+\addplot[ycomb, color=red, dashed, mark=*, mark options={solid, red}] table[row sep=crcr] {%
+0	0\\
+0.2	0\\
+0.4	0\\
+0.6	0\\
+0.8	0\\
+1	0\\
+1.2	2\\
+1.4	4\\
+1.6	6\\
+1.8	8\\
+2	10\\
+2.2	12\\
+2.4	14\\
+2.6	16\\
+2.8	18\\
+3	20\\
+3.2	22\\
+3.4	24\\
+3.6	26\\
+3.8	28\\
+4	30\\
+4.2	30\\
+4.4	30\\
+4.6	30\\
+4.8	30\\
+5	30\\
+5.2	30\\
+5.4	30\\
+5.6	30\\
+5.8	30\\
+6	30\\
+6.2	30\\
+6.4	30\\
+6.6	30\\
+6.8	30\\
+7	30\\
+7.2	30\\
+7.4	30\\
+7.6	30\\
+7.8	30\\
+8	30\\
+8.2	30\\
+8.4	30\\
+8.6	30\\
+8.8	30\\
+9	30\\
+9.2	30\\
+9.4	30\\
+9.6	30\\
+9.8	30\\
+10	30\\
+};
+\addplot[forget plot, color=white!15!black, dashed] table[row sep=crcr] {%
+-0.2	0\\
+10.2	0\\
+};
+\addlegendentry{Referencia $\rojo{\psi_{d}}$}
+
+\end{axis}
+\end{tikzpicture}%

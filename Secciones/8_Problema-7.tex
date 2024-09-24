@@ -111,6 +111,40 @@ dentro de los cálculos al retardo que ocurre por los cálculos.
   \caption{Lazo cerrado de control para el sistema híbrido, con controlador proporcional.}\label{fig:control-prop-hibrido}
 \end{figure}
 
+Simulamos entonces el sistema similarmente a como se simuló para el sistema con
+controlador proporcional continuo, y el resultado de esto se puede observar en
+la \autoref{fig:psi-prop-disc} y \autoref{fig:estado-prop-disc}.
+
+Luego, buscamos los autovalores del sistema. Para esto, nuevamente se obtiene la
+función de transferencia del sistema. Entonces, similar al caso continuo, esta
+tendrá la forma:
+\begin{equation}
+  \frac{G(z)}{1 + G(z)r(z)}
+\end{equation}
+
+Donde, $G(z)$ es la F. de T. del lazo directo, mientras que $r(z)$ la del lazo
+de realimentación. Entonces, queremos determinar $G(z)$:
+\begin{align}
+  G(z) &= \nara{k_{c}}z^{-1} \cdot \sfrac{\rojo{\psi}(z)}{\verd{v_{i}}(z)} \\
+  &\text{Utilizamos \verb|ss2tf| de \textit{MATLAB}} \\
+  G(z) &= \nara{k_{c}}z^{-1} \cdot \frac{0.009z^{2} + 0.0058z - 0.0038}{z^{3} - 0.3895z^{2} + 0.5102z - 0.5673} \\
+  G(z) &= \nara{k_{c}}\frac{0.009z^{2} + 0.0058z - 0.0038}{z^{4} - 0.3895z^{3} + 0.5102z^{2} - 0.5673z}
+\end{align}
+
+Luego, $r(z) = \nara{k_{st}}$. Entonces, nos interesa determinas los polos de
+la F. de T, entonces, buscamos
+\begin{equation}
+  1 + G(z)r(z) = 0
+\end{equation}
+
+Utilizando \textit{MATLAB} encontramos entonces que los polos de la F. de T. y,
+por consecuente, los autovalores del sistema en lazo cerrado son:
+\begin{align}
+  \lambda_{0} &= -0.0015 \\
+  \lambda_{1} &= 0.7375 \\
+  \lambda_{2,3} &= -0.1732 \pm 0.8593j \\
+\end{align}
+
 \begin{figure}[h]
   \centering
   \input{Diagramas/psi_pg.tex}

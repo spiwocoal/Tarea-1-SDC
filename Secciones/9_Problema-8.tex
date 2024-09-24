@@ -154,22 +154,39 @@ autovalores del sistema en L.C. discreto son:
 
 Entonces, el periodo de oscilación es
 \begin{equation}
-    T = \frac{2\pi}{\mathfrak{Im}(\lambda_{2})} = 6.298\ \unit{T s} 
+    T = \frac{2\pi \cdot T_{m}}{\mathfrak{Im}(\ln(\lambda_{2}))} = 0.8105\ \unit{s} 
 \end{equation}
 
-Como $T= 0.2$ es decir cada $1.259 \unit{s}$ 
+\begin{figure}[h]
+    \centering
+    \input{Diagramas/psi_ph.tex}
+    \caption{Referencia y ángulo obtenido con controlador proporcional}\label{fig:psi-prop-disc-marge}
+\end{figure}
 
-
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_ph.tex}
+  \caption{Variables de estado del sistema con contolador proporcional}\label{fig:estado-prop-disc-marge}
+\end{figure}
 
 \FloatBarrier
 
 \subsection{Comentarios}
 
 
-Con respecto al desarrollo, podemos notar que la función de transferencia (\eqref{eq:fdt-LCd}) es de orden 4. Esto se debe a que el retardo por cálculo ($z^{-1}$) introduce un polo adicional en la función de transferencia del lazo cerrado, incrementando su orden y afectando la dinámica del sistema.
+Con respecto al desarrollo, podemos notar que la función de transferencia
+\eqref{eq:fdt-LCd} es de orden 4. Esto se debe a que el retardo por cálculo
+($z^{-1}$) introduce un polo adicional en la función de transferencia del lazo
+cerrado, incrementando su orden y afectando la dinámica del sistema.
 
-Además, al analizar los gráficos de salida con respecto a la entrada de referencia, observamos que el sistema no logra alcanzar el valor de referencia. Este comportamiento se debe a que estamos utilizando un controlador proporcional $\nara{k_c}$, el cual ajusta la salida del sistema en función de la magnitud del error en tiempo real, pero no es capaz de eliminar completamente el error en estado estacionario. El controlador proporcional genera una corrección proporcional a la diferencia entre la salida y la referencia, pero en sistemas donde se requiere un seguimiento preciso , el error residual es inevitable debido a la ausencia de acción integral. Por lo tanto, el sistema no alcanza la altura deseada debido a este error en estado estacionario.
-
-
-
+Además, al analizar los gráficos de salida con respecto a la entrada de referencia,
+observamos que el sistema no logra alcanzar el valor de referencia. Este
+comportamiento se debe a que estamos utilizando un controlador proporcional
+$\nara{k_c}$, el cual ajusta la salida del sistema en función de la magnitud del
+error en tiempo real, pero no es capaz de eliminar completamente el error en estado
+estacionario. El controlador proporcional genera una corrección proporcional a la
+diferencia entre la salida y la referencia, pero en sistemas donde se requiere un
+seguimiento preciso , el error residual es inevitable debido a la ausencia de
+acción integral. Por lo tanto, el sistema no alcanza la altura deseada debido a
+este error en estado estacionario.
 

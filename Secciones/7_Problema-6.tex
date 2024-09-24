@@ -1,7 +1,7 @@
 \section{Pregunta \texttt{f)}}\label{pregunta-f}
 
 A continuación, nos interesa determinar un equivalente discreto para el
-sistema, considerando un tiempo de muestreo $T = 200\ \unit{ms}$.
+sistema, considerando un tiempo de muestreo $T_{m} = 200\ \unit{ms}$.
 
 Para esto, vamos a utilizar las matrices del sistema que obtuvimos en la pregunta
 \hyperref[pregunta-b]{\texttt{b)}}:
@@ -27,7 +27,7 @@ De lo visto en el curso de Sistemas Lineales Dinámicos \cite{apunte-sld}, sabem
 que para obtener el equivalente discreto de estas matrices debemos realizar los
 siguientes cálculos:
 \begin{equation}
-\mathbf{A_d}= e^{\mathbf{A}T} ,\quad \mathbf{B_d}= \int_{0}^{T} e^{\mathbf{A}(T-\sigma)}\mathbf{B}  \,d\sigma 
+    \mathbf{A_d}= e^{\mathbf{A}T_{m}} ,\quad \mathbf{B_d}= \int_{0}^{T_{m}} e^{\mathbf{A}(T_{m}-\sigma)}\mathbf{B}  \,d\sigma 
 \end{equation}
 
 Nos ayudamos entonces de \textit{MATLAB} para determinar los valores de estas
@@ -106,7 +106,7 @@ obtuvimos :
   \lambda_{0} &= -1.5152 \\
   \lambda_{1,2} &= -0.6692 \pm 8.9192j
 \end{align}
-y al aplicar la aplicar la transformación discreta con \( T = 0.2   \unit{s} 
+y al aplicar la aplicar la transformación discreta con \( T_{m} = 200\ \unit{ms} 
 \), se obtienen:
 
 \begin{align}

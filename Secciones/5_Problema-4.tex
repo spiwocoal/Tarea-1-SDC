@@ -2,7 +2,7 @@
 
 Para este apartado nos piden calcular el $\nara{k_{c}}$ que hace al sistema
 marginalmente estable, donde igualmente nos ayudaremos de \textit{MATLAB}, con
-el codigo disponible en \autoref{lst:problema-d}, para hacer los calculos
+el código disponible en \autoref{lst:problema-d}, para hacer los cálculos
 de manera simbólica.
 
 Entonces, empezamos por obtener la función de transferencia del sistema para
@@ -113,21 +113,20 @@ Entonces, el periodo de oscilación es
 En la \autoref{fig:psi-prop-marge} vemos que no alzanza la altura deseada 
 debido a la naturaleza de su diseño , ya  que, el controlador proporcional 
 introduce un error en estado estacionario cuando la ganancia proporcional no es 
-suficientemente alta. Esto sucede porque el controladoe proporcional ajusta la 
+suficientemente alta. Esto sucede porque el controlador proporcional ajusta la 
 salida de acuerdo con la magnitud del error actual.
-Es decir el controlador proporcianal no alcanza la referencia deseada porque 
-genera una accion correctiva proporcional al error, pero no puede eliminarlo 
+Es decir el controlador proporcional no alcanza la referencia deseada porque 
+genera una acción correctiva proporcional al error, pero no puede eliminarlo 
 completamente sin introducir componentes adicionales como la integral que 
-veremos en  la siguiente pregunta.
+veremos en el siguiente apartado.
 
-Observamos que para el $\nara{k_{c}}$ encontrado, hace que  la salida  y las
- variables de estado, oscilan significativamente 
-Esto es debido a que, el sistema al ser marginalmente estable en lugar de 
-estable,en estado estacionario no convergerá nunca a un valor fijo, pero puesto 
-que el
-sistema tampoco es inestable, ya que la parte real de sus polos no es positiva,
-entonces tampoco divergirá. Como consecuencia de esto, la salida del sistema
-oscila en torno a un valor cuando el sistema está en estado estacionario.
+Observamos que para el $\nara{k_{c}}$ encontrado, la salida y las variables de
+estado oscilan significativamente. Esto es debido a que, el sistema al ser
+marginalmente estable en lugar de estable, en estado estacionario no convergerá
+nunca a un valor fijo, pero puesto que el sistema tampoco es inestable, ya que
+la parte real de sus polos no es positiva, entonces tampoco divergirá. Como
+consecuencia de esto, la salida del sistema oscila en torno a un valor cuando
+el sistema está en estado estacionario.
 
 
 

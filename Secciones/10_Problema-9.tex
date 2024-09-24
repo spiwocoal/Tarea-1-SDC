@@ -5,7 +5,7 @@ $\sfrac{\nara{k_{c}}}{(z - 1)}$ para el sistema estudiado, el cual tendrá
 $\nara{k_{c}} = 4\unit{m}$. Observamos que esto corresponde a un controlador de
 tipo integrador. Entonces, el lazo de control que se utilizará será similar al
 que se utilizó previamente para la pregunta \hyperref[pregunta-h]{\texttt{g)}},
-y se puede observar en la \autoref{fig:control-int-hibrido}, donde es importante
+y es aquel de la \autoref{fig:control-int-hibrido}, donde es importante
 mencionar que nuevamente lo trabajamos como sistema híbrido, y con un retardo
 por cálculos.
 
@@ -175,7 +175,8 @@ Definimos la transformación bilineal, en la cual se reemplaza $z$, tal que
 
 Ahora sustituimos $z$ en el polinomio característico y simplificamos:
 \begin{equation}
-    P(z) = (\frac{w+1}{1-w})^5 +\nara{a_4}\frac{w+1}{1-w})^4 + \nara{a_3}(\frac{w+1}{1-w})^3 + \nara{a_2} (\frac{w+1}{1-w})^2 + \nara{a_1} (\frac{w+1}{1-w}) + \nara{a_0}
+    P(z) = \left(\frac{w+1}{1-w}\right)^5 +\nara{a_4}\left(\frac{w+1}{1-w}\right)^4 + \nara{a_3}\left(\frac{w+1}{1-w}\right)^3
+    + \nara{a_2} \left(\frac{w+1}{1-w}\right)^2 + \nara{a_1} \left(\frac{w+1}{1-w}\right) + \nara{a_0}
 \end{equation}
 
 Luego, se multiplica por $(1-w)^5$:
@@ -280,7 +281,7 @@ que hace que el sistema lo sea es:
     \boxed{\nara{k_c} = 0.0069}
 \end{equation}
 
-Ahora bien para calcular el periodo de oscilación realizamos lo mismo que en
+Luego, para calcular el periodo de oscilación realizamos lo mismo que en
 \hyperref[pregunta-c]{\texttt{c)}} solo que ahora con el denominador de la
 ecuación \eqref{eq:fdt-LCdi}, obteniendo que los autovalores del sistema en L.C.
 discreto son:
@@ -314,7 +315,7 @@ Entonces, el periodo de oscilación es
 Con respecto al desarrollo, podemos notar que la función de transferencia 
 \eqref{eq:fdt-LCdi} es de orden 5. Esto se debe a que tanto el retardo por 
 cálculo ($z^{-1}$) como el término ($\sfrac{1}{z-1}$), que corresponde al 
-controlador integral, contribuyen al incremento del orden de la F.de T. del 
+controlador integral, contribuyen al incremento del orden de la F. de T. del 
 lazo cerrado. Específicamente, el retardo introduce un polo adicional, mientras 
 que el término integral aporta un polo en el origen, lo que incrementa el orden 
 del sistema y su complejidad dinámica.

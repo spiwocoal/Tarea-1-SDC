@@ -4,7 +4,7 @@
 En este apartado tenemos que determinar el $\nara{k_c}$  que hace el sistema
 marginalmente estable y simular como en \hyperref[pregunta-g]{\texttt{g)}}. Para
 esto, primero calcularemos la función de tansferencia de el lazo cerrado, donde
-primero calculamos la funcion de transferencia de las matrices discretas obtenidas
+primero calculamos la F. de T. de las matrices discretas obtenidas
 anteriomente, tal que,
 \begin{equation}
    \frac{\rojo{\psi}(z)}{\verd{v_{i}}(z)} = \frac{0.008997z^2 + 0.005767 z - 0.003827}
@@ -52,7 +52,7 @@ primero definimos la transformación bilineal, en la cual se reemplaza $z$, tal 
 
 Ahora sustituimos $z$ en el polinomio característico:
 \begin{equation}
-    P(z) = (\frac{w+1}{1-w})^4 + \nara{a_3}(\frac{w+1}{1-w})^3 + \nara{a_2} (\frac{w+1}{1-w})^2 + \nara{a_1} (\frac{w+1}{1-w}) + \nara{a_0}
+    P(z) = \left(\frac{w+1}{1-w}\right)^4 + \nara{a_3}\left(\frac{w+1}{1-w}\right)^3 + \nara{a_2} \left(\frac{w+1}{1-w}\right)^2 + \nara{a_1} \left(\frac{w+1}{1-w}\right) + \nara{a_0}
 \end{equation}
 
 Luego, se multiplica por $(1-w)^4$:
@@ -135,6 +135,10 @@ que hace que el sistema lo sea es:
     \boxed{\nara{k_c} = 0.0069}
 \end{equation}
 
+Simulamos nuevamente el sistema, con la ganancia calculada en el controlador y
+vemos que la nueva respuesta de este en las \autoref{fig:psi-prop-disc-marge} y
+\autoref{fig:estado-prop-disc-marge}.
+
 Ahora bien para determinar el perido de oscilación primero primero econtramos los valores propios como en  \hyperref[pregunta-c]{\texttt{c)}}.
 
 Entonces, los valores propios del sistema serán los polos de la función de
@@ -172,7 +176,6 @@ Entonces, el periodo de oscilación es
 \FloatBarrier
 
 \subsection{Comentarios}
-
 
 Con respecto al desarrollo, podemos notar que la función de transferencia
 \eqref{eq:fdt-LCd} es de orden 4. Esto se debe a que el retardo por cálculo

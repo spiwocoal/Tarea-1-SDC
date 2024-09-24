@@ -3,7 +3,7 @@
 Luego, se quiere repetir \hyperref[pregunta-c]{\texttt{c)}}, pero con un controlador
 integrador $\sfrac{\nara{k_{c}}}{s}$. Entonces, el lazo de control que se utilizará
 será muy similar al de la \autoref{fig:control-proporcional}, pero el bloque 
-controlador será diferente. Éste lazo de control se puede observar en la
+controlador será diferente. Este lazo de control se puede observar en la
 \autoref{fig:control-integral}.
 
 \begin{figure}[h]
@@ -94,6 +94,8 @@ Entonces, las gráficas de las variables del sistema están disponibles en la
   \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-integral}
 \end{figure}
 
+\FloatBarrier
+
 Luego, para determinar los autovalores del sistema, tal como se hizo en 
 \hyperref[pregunta-c]{\texttt{c)}}, determinamos la función de transferencia,
 esta vez con $G(s) = \sfrac{\nara{k_{c}}}{s} \nara{k_{a}} \dfrac{\rojo{\psi}(s)}{\verd{v_{i}(s)}}$.
@@ -171,7 +173,8 @@ De \eqref{eq:polinomio-prob-e} notamos que $\nara{k_{c}}$ sólo está presente
   \nara{k_c}  &< \frac{\nara{a_3 a_2}}{\nara{a_4 b_{1\psi} b_{0\omega} k_{st} k_a}}  - \frac{\nara{a_{0\psi} a_{0\omega}}}{\nara{b_{1\psi} b_{0\omega} k_{st} k_a}}  \\
 \end{align}
 
-Ahora bien si damos el uso del los calculos symbolicos y numericos de \textit{Matlab} (\autoref{lst:problema-e_kc})obtendriamos que: 
+Ahora bien si damos el uso del los calculos symbolicos y numericos de \textit{MATLAB}
+(\autoref{lst:problema-e_kc}) obtendríamos que: 
 
 \begin{equation}
   \nara{k_c} < 0.0362
@@ -182,6 +185,9 @@ Por lo que se debe cumplir lo anterior para que sea estable, entonces si queremo
 \begin{equation}
   \boxed{\nara{k_c} = 0.0362}
 \end{equation}
+
+Simulamos para esta ganancia en el controlador y obtenemos las \autoref{fig:psi-marge-int}
+y \autoref{fig:estado-marge-int}.
 
 \begin{figure}[h]
   \centering

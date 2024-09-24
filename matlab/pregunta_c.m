@@ -30,4 +30,3 @@ for i = 1:length(t) - 1
   w_con(i+1)   = w;
   v_icon(i+1)  = v_i;
 end
-

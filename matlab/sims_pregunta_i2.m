@@ -12,7 +12,7 @@ B_d = integral(B_d_int, 0, T, 'ArrayValued', true);
 C = [1 0 0];
 
 %% Ganancias del sistema
-k_st = 180/pi; k_a = 100; k_c = 4e-3;
+k_st = 180/pi; k_a = 100; k_c = 0.0069;
 
 %% Simulación
 t  = 0:T:10;        % Tiempo de simulación

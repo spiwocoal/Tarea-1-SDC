@@ -112,9 +112,9 @@ Ahora bien para el calculo del $\nara{kc}$ en este apartado se procedera al igua
 Comenzado para este caso, se tiene $G(z) = \frac{k_{c}}{z-1}\nara{ k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
 y $r(z) = \nara{k_{st}}$.  Por lo tanto nuestra Funcion de transferencia de lazo cerrado sera,
 \begin{equation}
-    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\frac{k_{c}}{z-1}\nara{k_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
+    \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\frac{\nara{k_{c}}}{z-1}\nara{k_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
     {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}}
-    {1+\frac{k_{c}}{z-1}\nara{k_a} z^{-1} \frac{0.008997z^2 + 0.005767 z - 0.003827}
+    {1+\frac{\nara{k_{c}}}{z-1}\nara{k_a} z^{-1} \frac{0.008997z^2 + 0.005767 z - 0.003827}
     {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}\nara{k_{st}}}
 \end{equation}
 
@@ -125,7 +125,6 @@ Reduciendo y simplificando se obtiene:
     + \left(0.0058 \nara{k_c k_a k_{st}}   + 0.5673 \right) z 
     -0.0038 \nara{k_c k_a k_{st}} }
 \end{equation}
-
 
 Nuevamente nos enfocamos entonces en el denominador que es donde se ecuentran lo polos y
 utilizamos el criterio de Routh-Hurwitz para analizar la estabilidad. 
@@ -198,43 +197,45 @@ que el sistema vaya a ser estable.
 Donde con \textit{MATLAB} obtenemos los valores de $\nara{k_c}$ que cumplen la condición por separado siendo los siguientes:
 
 
-    \begin{multicols}{4}
-        Para $\nara{b_3}$: 
-        \begin{align}
-            \nara{k_{c1}} & = -0.0097 \\
-            \nara{k_{c2}} & = 0.0511
-        \end{align}
-        
-        \columnbreak
-        
-        Para $\nara{b_2}$:
-        \begin{align}
-            \nara{k_{c3}} & = 0.0112 \\
-            \nara{k_{c4}} & = 0.1121 \\
-        \end{align}
-
-        \columnbreak
-
-        Para $\nara{b_1}$: 
-        \begin{align}
-            \nara{k_{c5}} & = -0.0065 \\
-            \nara{k_{c6}} & = 0.0361 \\
-            \nara{k_{c7}} & =   0.0519
-        \end{align}
-          
-        \columnbreak
-
-        Para $\nara{b_0}$: 
-        \begin{align}
-            \nara{k_{c8}} & = -0.0066 \\
-            \nara{k_{c9}} & = 0.0069 \\
-            \nara{k_{c10}} & = 0.0519 \\
-            \nara{k_{c11}} & = -0.1205
-        \end{align}
+\begin{multicols}{4}
+    Para $\nara{b_3}$: 
+    \begin{align}
+        \nara{k_{c1}} & = -0.0097 \\
+        \nara{k_{c2}} & = 0.0511
+    \end{align}
     
-    \end{multicols}
+    \columnbreak
+    
+    Para $\nara{b_2}$:
+    \begin{align}
+        \nara{k_{c3}} & = 0.0112 \\
+        \nara{k_{c4}} & = 0.1121 \\
+    \end{align}
 
-Probando los valores donde \( k_c > 0 \) en \textit{MATLAB}, vemos cuál cumple la condición del criterio de Routh-Hurwitz, que consiste en que la columna pivote sea completamente positiva.
+    \columnbreak
+
+    Para $\nara{b_1}$: 
+    \begin{align}
+        \nara{k_{c5}} & = -0.0065 \\
+        \nara{k_{c6}} & = 0.0361 \\
+        \nara{k_{c7}} & =   0.0519
+    \end{align}
+      
+    \columnbreak
+
+    Para $\nara{b_0}$: 
+    \begin{align}
+        \nara{k_{c8}} & = -0.0066 \\
+        \nara{k_{c9}} & = 0.0069 \\
+        \nara{k_{c10}} & = 0.0519 \\
+        \nara{k_{c11}} & = -0.1205
+    \end{align}
+
+\end{multicols}
+
+Probando los valores donde $\nara{k_{c}} > 0$ en \textit{MATLAB}, vemos cuál
+cumple la condición del criterio de Routh-Hurwitz, que consiste en que la columna
+pivote sea completamente positiva.
 
 \begin{equation}
     \nara{k_{c}}  < 0.0069
@@ -247,8 +248,10 @@ que hace que el sistema lo sea es:
     \boxed{\nara{k_c} = 0.0069}
 \end{equation}
 
-Ahora bien para calcular el periodo de oscilación realizamos lo mismo que en \hyperref[pregunta-c]{\texttt{c)}} solo que ahora con el denominador de la ecuacion (\eqref{eq:fdt-LCdi}), obteniendo que los
-autovalores del sistema en L.C. discreto son:
+Ahora bien para calcular el periodo de oscilación realizamos lo mismo que en
+\hyperref[pregunta-c]{\texttt{c)}} solo que ahora con el denominador de la
+ecuación \eqref{eq:fdt-LCdi}, obteniendo que los autovalores del sistema en L.C.
+discreto son:
 
 \begin{align*}
   \lambda_{0} &= 0.2234\\
@@ -259,25 +262,34 @@ autovalores del sistema en L.C. discreto son:
 
 Entonces, el periodo de oscilación es
 \begin{equation}
-    T = \frac{2\pi}{\mathfrak{Im}(\lambda_{3})} = 8.2457\ \unit{T s} 
+    T = \frac{2\pi \cdot T_{m}}{\mathfrak{Im}(\ln(\lambda_{3}))} = 2.5\ \unit{s} 
 \end{equation}
-
-Como $T= 0.2$ decir cada $1.6491 \unit{s}$ 
-
 
 \begin{figure}[h]
     \centering
     \input{Diagramas/psi_pi.tex}
     \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc}
-  \end{figure}
-  
-  \begin{figure}[h]
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pi.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
+\end{figure}
+
+\begin{figure}[h]
     \centering
-    \input{Diagramas/estado_pi.tex}
-    \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
-  \end{figure}
+    \input{Diagramas/psi_pi2.tex}
+    \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc-marge}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pi2.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc-marge}
+\end{figure}
   
-  \FloatBarrier
+\FloatBarrier
 
 
 \subsection{Comentarios}

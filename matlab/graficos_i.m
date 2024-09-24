@@ -1,32 +1,31 @@
-sims_pregunta_i;
+sims_pregunta_i2;
 
-psi   = x_con(1,:) * 180/pi;
-dpsi  = x_con(2,:) * 180/pi;
-omega = x_con(3,:) * 60/(2*pi);
+dpsi  = x(:,2) * 180/pi;
+omega = x(:,3) * 60/(2*pi);
 
 %% Graficar simulación
 f1 = figure(1);
 
-stem(t, psi, 'r');
+stem(t, psi_m, 'r');
 hold on
-stem(t, psi_d(t), 'r.--')
+stem(t, psi_d, 'r.--')
 title("Ángulo de referencia y la salida obtenida");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\psi$ (deg)", "Interpreter", "latex");
 legend('medido', 'referencia');
-ylim([0 32])
+%ylim([0 32])
 hold off
 
 f2 = figure(2);
 
 subplot(2,2,1);
-stem(t, w_con, 'b.');
+stem(t, w, 'b.');
 title("Entrada al actuador");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$w$", "Interpreter", "latex");
 
 subplot(2,2,2);
-stem(t, v_icon, 'g.');
+stem(t, v_i, 'g.');
 title("Voltaje del motor");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$v_{i}(t)$ (V)", "Interpreter", "latex");

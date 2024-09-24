@@ -44,8 +44,12 @@
 \begin{document}
 
 \import{Secciones/}{1_Portada.tex}
-\FloatBarrier
-\newpage
+{
+  \hypersetup{hidelinks}
+  \tableofcontents
+}
+\clearpage
+
 \import{Secciones/}{2_Problema-1.tex}
 \FloatBarrier 
 \newpage
@@ -75,8 +79,8 @@
 \newpage
 
 \appendix
-\section{Apéndice} 
-\subsection{Codigo Matlab} 
+\section*{Apéndice} 
+\section{Código Matlab} 
 \import{Secciones}{codigos.tex}
 
 \pagestyle{\auxsettings}

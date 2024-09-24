@@ -1,5 +1,13 @@
 \section{Pregunta \texttt{i)}}\label{pregunta-i}
 
+A continuación, queremos implementar un controlador discreto con F. de T.
+$\sfrac{\nara{k_{c}}}{(z - 1)}$ para el sistema estudiado, el cual tendrá
+$\nara{k_{c}} = 4\unit{m}$. Observamos que esto corresponde a un controlador de
+tipo integrador. Entonces, el lazo de control que se utilizará será similar al
+que se utilizó previamente para la pregunta \hyperref[pregunta-h]{\texttt{g)}},
+y se puede observar en la \autoref{fig:control-int-hibrido}, donde es importante
+mencionar que nuevamente lo trabajamos como sistema híbrido, y con un retardo
+por cálculos.
 
 \begin{figure}[h]
   \centering
@@ -102,15 +110,41 @@
     \draw[Emerald] (sum.west) -- ++(-1,0) 
         node[midway,above]{$\rojo{\psi_{d}}$};
   \end{tikzpicture}
-  \caption{Lazo cerrado de control para el sistema híbrido, con controlador integrador.}\label{fig:control-prop-hibrido}
+  \caption{Lazo cerrado de control para el sistema híbrido, con controlador integrador.}\label{fig:control-int-hibrido}
 \end{figure}
 
+Simulamos entonces el sistema, y para este controlador, no logramos utilizar un
+método iterativo para realizar las simulaciones como se hizo para el caso continuo
+del apartado \hyperref[pregunta-c]{\texttt{e)}}. Entonces, lo que se hizo fue
+utilizar la F. de T. del lazo cerrado para simular el sistema, gracias al comando
+\verb|lsim| de \textit{MATLAB}. Luego, se utilizó nuevamente el comando con las
+F. de T. de cada bloque del sistema para obtener los valores que toma cada variable
+de estado. El método utilizado puede entonces verse en el \autoref{lst:sims-pregunta-i}.
 
+Las gráficas obtenidas para este valor de $\nara{k_{c}}$ son aquellas de la
+\autoref{fig:psi-int-disc} y \autoref{fig:estado-int-disc}.
 
-Ahora bien para el calculo del $\nara{kc}$ en este apartado se procedera al igual que en el apartado \hyperref[pregunta-h]{\texttt{h)}}.
+\begin{figure}[h]
+    \centering
+    \input{Diagramas/psi_pi.tex}
+    \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc}
+\end{figure}
 
-Comenzado para este caso, se tiene $G(z) = \frac{\nara{k_{c}}}{z-1}\nara{k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
-y $r(z) = \nara{k_{st}}$.  Por lo tanto nuestra Funcion de transferencia de lazo cerrado sera,
+\begin{figure}[h]
+  \centering
+  \input{Diagramas/estado_pi.tex}
+  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
+\end{figure}
+
+\FloatBarrier
+
+Luego, queremos determinar el valor de $\nara{k_{c}}$ que hace al sistema
+marginalmente estable. Entonces se procede de igual manera que en el apartado
+\hyperref[pregunta-h]{\texttt{h)}}.
+
+Para este caso, se tiene entonces
+$G(z) = \frac{\nara{k_{c}}}{z-1}\nara{k_{a}} z^{-1} \cdot \frac{\rojo{\psi}(z)}{\verd{v_i}(z)}$,
+y $r(z) = \nara{k_{st}}$. Por lo tanto nuestra F. de T. de lazo cerrado será,
 \begin{equation}
     \frac{G(z)}{1 + G(z)r(z)} = \dfrac{\frac{\nara{k_{c}}}{z-1}\nara{k_a} z^{-1} \cdot\frac{0.008997z^2 + 0.005767 z - 0.003827}
     {z^3 - 0.3895 z^2 + 0.5102 z -0.5673}}
@@ -149,8 +183,6 @@ Luego, se multiplica por $(1-w)^5$:
     P(z) &=  ({w+1})^5 +\nara{a_4}({w+1})^4(1-w)+ \nara{a_3}({w+1})^3(1-w)^2 + \nara{a_2} ({w+1})^2 (1-w)^3 \\
     &+ \nara{a_1} ({w+1})(1-w)^4+ \nara{a_0}(1-w)^5
 \end{align}
-
-
 
 Resolvemos los productos, distribuimos y reordenamos obteniendo:
 \begin{align}
@@ -259,23 +291,10 @@ discreto son:
   \lambda_{3,4} &= -0.2920 \pm 0.7620j
 \end{align*}
 
-
 Entonces, el periodo de oscilación es
 \begin{equation}
     T = \frac{2\pi \cdot T_{m}}{\mathfrak{Im}(\ln(\lambda_{3}))} = 2.5\ \unit{s} 
 \end{equation}
-
-\begin{figure}[h]
-    \centering
-    \input{Diagramas/psi_pi.tex}
-    \caption{Referencia y ángulo obtenido con controlador integrador}\label{fig:psi-int-disc}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \input{Diagramas/estado_pi.tex}
-  \caption{Variables de estado del sistema con contolador integrador}\label{fig:estado-int-disc}
-\end{figure}
 
 \begin{figure}[h]
     \centering
@@ -290,13 +309,10 @@ Entonces, el periodo de oscilación es
 \end{figure}
   
 \FloatBarrier
-
-
 \subsection{Comentarios}
 
-
 Con respecto al desarrollo, podemos notar que la función de transferencia 
-(\eqref{eq:fdt-LCdi}) es de orden 5. Esto se debe a que tanto el retardo por 
+\eqref{eq:fdt-LCdi} es de orden 5. Esto se debe a que tanto el retardo por 
 cálculo ($z^{-1}$) como el término ($\sfrac{1}{z-1}$), que corresponde al 
 controlador integral, contribuyen al incremento del orden de la F.de T. del 
 lazo cerrado. Específicamente, el retardo introduce un polo adicional, mientras 

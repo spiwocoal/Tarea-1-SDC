@@ -32,4 +32,8 @@ err = psi_d' - psi_m; % Error del controlador
 w = lsim(cnt*ret, err, t); % Entrada al actuador
 v_i = w * k_a; % Voltaje del motor
 
-[~, ~, x] = lsim(sys, v_i, t); % Variables de estado
+tt = linspace(0, 10, 1e4);
+sys_c = ss(A, B, C, 0);
+v_ic = zoh(v_i, t, tt);
+
+[~, ~, x] = lsim(sys_c, v_ic, tt); % Variables de estado

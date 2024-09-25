@@ -1,44 +1,43 @@
 sims_pregunta_g;
 
-psi   = x_con(1,:) * 180/pi;
-dpsi  = x_con(2,:) * 180/pi;
-omega = x_con(3,:) * 60/(2*pi);
+psi   = x(:,1) * 180/pi;
+dpsi  = x(:,2) * 180/pi;
+omega = x(:,3) * 60/(2*pi);
 
 %% Graficar simulación
 f1 = figure(1);
 
-stem(t, psi, 'r');
+plot(tt, psi, 'r');
 hold on
-stem(t, psi_d(t), 'r.--')
+stem(t, psi_d, 'r.--')
 title("Ángulo de referencia y la salida obtenida");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\psi$ (deg)", "Interpreter", "latex");
 legend('medido', 'referencia');
-ylim([0 32])
 hold off
 
 f2 = figure(2);
 
 subplot(2,2,1);
-stem(t, w_con, 'b.');
+stem(t, w, 'b.');
 title("Entrada al actuador");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$w$", "Interpreter", "latex");
 
 subplot(2,2,2);
-stem(t, v_icon, 'g.');
+plot(tt, v_ic, 'g');
 title("Voltaje del motor");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$v_{i}(t)$ (V)", "Interpreter", "latex");
 
 subplot(2,2,3);
-stem(t, dpsi, 'r.');
+plot(tt, dpsi, 'r');
 title("Velocidad angular de la bolita");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\dot{\psi}(t)$ (deg/s)", "Interpreter", "latex");
 
 subplot(2,2,4);
-stem(t, omega, '.');
+plot(tt, omega);
 title("Velocidad angular del anillo");
 xlabel("Tiempo (s)", "Interpreter", "latex");
 ylabel("$\omega(t)$ (RPM)", "Interpreter", "latex");

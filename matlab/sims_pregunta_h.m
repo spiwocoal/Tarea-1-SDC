@@ -1,5 +1,5 @@
 matrices;
-psi_0   = 30 * pi/180;
+psi_0 = 30 * pi/180;
 T = 200e-3;
 
 % Matriz A discreta
@@ -9,31 +9,31 @@ A_d = expm(A*T);
 B_d_int = @(tau) expm(A*(T-tau)) * B;
 B_d = integral(B_d_int, 0, T, 'ArrayValued', true);
 
+C = [1 0 0];
+
 %% Ganancias del sistema
 k_st = 180/pi; k_a = 100; k_c = 0.0069;
 
-%% Referencia
-psi_d = @(t) psi_0 .* k_st .* (rampa(t - 1) - rampa(t - 4)) ./ 3;
-
 %% Simulación
 t  = 0:T:10;        % Tiempo de simulación
+psi_d = psi_0 .* k_st .* (rampa(t - 1) - rampa(t - 4)) ./ 3; % Referencia
 
-x_con  = zeros(3, length(t));
-w_d = zeros(1, length(t));
-w_con  = zeros(1, length(t));
-v_icon = zeros(1, length(t));
+cnt = k_c; % Controlador
+ret = tf(1, [1 0], T); % Retardo
+sys = ss(A_d, B_d, C, 0, T);
+LaD = cnt * ret * k_a * sys; % Lazo directo
 
-for i = 1:length(t) - 1
-  t_ac = t(i);       % Instante de tiempo actual
-  x = x_con(:,i);  % Variables de estado en el instante previo 
+LaC = LaD / (1 + k_st*LaD); % Lazo cerrado
 
-  psi_m = k_st * x(1); % Ángulo medido
-  err = psi_d(t_ac) - psi_m;
+psi = lsim(LaC, psi_d, t); % Salida del sistema
+psi_m = k_st * psi; % Salida medida
 
-  w = err * k_c;
-  v_i = w_con(i) * k_a; % Se utiliza valor previo debido a retardo por calculos
-  
-  x_con(:,i+1) = A_d * x + B_d * v_i;
-  w_con(i+1)   = w; % Se almacena el valor de w calculado para la proxima iteración
-  v_icon(i+1)  = v_i;
-end
+err = psi_d' - psi_m; % Error del controlador
+w = lsim(cnt*ret, err, t); % Entrada al actuador
+v_i = w * k_a; % Voltaje del motor
+
+tt = linspace(0, 10, 1e4);
+sys_c = ss(A, B, C, 0);
+v_ic = zoh(v_i, t, tt);
+
+[~, ~, x] = lsim(sys_c, v_ic, tt); % Variables de estado

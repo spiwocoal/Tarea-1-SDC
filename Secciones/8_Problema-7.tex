@@ -111,9 +111,20 @@ dentro de los cálculos al retardo que ocurre por los cálculos.
   \caption{Lazo cerrado de control para el sistema híbrido, con controlador proporcional.}\label{fig:control-prop-hibrido}
 \end{figure}
 
-Simulamos entonces el sistema similarmente a como se simuló para el sistema con
-controlador proporcional continuo, y el resultado de esto se puede observar en
-la \autoref{fig:psi-prop-disc} y \autoref{fig:estado-prop-disc}.
+Simulamos entonces el sistema, y para este caso con un sistema híbrido, no logramos utilizar un
+método iterativo para realizar las simulaciones como se hizo para el caso continuo
+del apartado \hyperref[pregunta-c]{\texttt{e)}}. Entonces, lo que se hizo fue
+utilizar la F. de T. del lazo cerrado para simular el sistema, gracias al comando
+\verb|lsim| de \textit{MATLAB}. Luego, se utilizó nuevamente el comando con las
+F. de T. de cada bloque del sistema para obtener los valores que toma cada variable
+de estado. Para luego pasar del sistema discreto al continuo, se utilizó un retentor
+de orden cero para el voltaje del motor, y esto se le entregó luego al sistema continuo
+que se determinó en la pregunta \hyperref[pregunta-c]{\texttt{e)}}. El método utilizado
+puede entonces verse en el \autoref{lst:problema-g-sims}, y la función que se creó para
+implementar el retentor de orden cero en el \autoref{lst:zoh}.
+
+Las gráficas obtenidas por este método se pueden ver en \autoref{fig:psi-prop-disc} y
+\autoref{fig:estado-prop-disc}.
 
 Luego, buscamos los autovalores del sistema. Para esto, nuevamente se obtiene la
 función de transferencia del sistema. Entonces, similar al caso continuo, esta
